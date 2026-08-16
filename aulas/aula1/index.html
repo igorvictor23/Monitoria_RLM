@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitoria de Raciocínio Lógico e Matemático</title>
+  <meta name="description" content="Material de apoio da monitoria de Raciocínio Lógico e Matemático: proposições, conectivos, linguagem simbólica e tabelas-verdade.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+
+<div class="barra-progresso" id="barra-progresso" aria-hidden="true"></div>
+
+<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__marca">📘 Monitoria de RLM</div>
+    <div class="sidebar__sub">Raciocínio Lógico e Matemático</div>
+    <nav aria-label="Navegação por tópicos">
+      <ul class="sidebar__nav">
+        <li><a href="#inicio" aria-current="true">Início</a></li>
+        <li><a href="#proposicoes-simples">1. Proposições Simples</a></li>
+        <li><a href="#proposicoes-compostas">2. Proposições Compostas</a></li>
+        <li><a href="#conectivos">3. Conectivos Lógicos</a></li>
+        <li><a href="#traducao">4. Linguagem Natural ↔ Simbólica</a></li>
+        <li><a href="#tabelas-verdade">5. Tabelas-Verdade</a></li>
+        <li><a href="#trilha">6. Trilha: da frase à tabela</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============ CONTEÚDO ============ -->
+  <main class="conteudo">
+
+    <!-- ====== SEÇÃO INÍCIO ====== -->
+    <section id="inicio">
+      <div class="hero">
+        <h1>Raciocínio Lógico e Matemático</h1>
+        <p class="hero__sub">Material de apoio da monitoria</p>
+        <p>Conteúdo organizado em tópicos curtos e independentes, seguindo a progressão da
+           apostila: da proposição simples até a construção de tabelas-verdade. Use o menu ao
+           lado para navegar por tópico ou acompanhe a sequência — cada assunto usa o anterior.</p>
+        <!-- opcional: monitor / horário / contato -->
+
+        <div class="cards-indice">
+          <a class="card-indice" href="#proposicoes-simples">
+            <span class="card-indice__num">1</span>
+            <div class="card-indice__titulo">Proposições Simples</div>
+            <p class="card-indice__resumo">O que é uma proposição, os 3 princípios da lógica e a definição de proposição simples.</p>
+          </a>
+          <a class="card-indice" href="#proposicoes-compostas">
+            <span class="card-indice__num">2</span>
+            <div class="card-indice__titulo">Proposições Compostas</div>
+            <p class="card-indice__resumo">Como duas ou mais proposições se unem por conectivos; notação P(p, q, …).</p>
+          </a>
+          <a class="card-indice" href="#conectivos">
+            <span class="card-indice__num">3</span>
+            <div class="card-indice__titulo">Conectivos Lógicos</div>
+            <p class="card-indice__resumo">Os 6 conectivos (∧, ∨, ⊻, →, ↔, ∼), seus nomes e significados.</p>
+          </a>
+          <a class="card-indice" href="#traducao">
+            <span class="card-indice__num">4</span>
+            <div class="card-indice__titulo">Linguagem Natural ↔ Simbólica</div>
+            <p class="card-indice__resumo">Método e exemplos para traduzir frases em português para símbolos e vice-versa.</p>
+          </a>
+          <a class="card-indice" href="#tabelas-verdade">
+            <span class="card-indice__num">5</span>
+            <div class="card-indice__titulo">Tabelas-Verdade</div>
+            <p class="card-indice__resumo">Regra 2ⁿ, tabela de cada conectivo, precedência e exemplo resolvido passo a passo.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SEÇÃO 1: PROPOSIÇÕES SIMPLES ====== -->
+    <section id="proposicoes-simples">
+      <h2>1. Proposições Simples</h2>
+
+      <h3>O que é uma proposição?</h3>
+      <p><strong>Proposição</strong> (ou sentença lógica) é toda frase que expressa um pensamento
+         completo e à qual podemos atribuir um valor de <strong>verdadeiro (V)</strong> ou
+         <strong>falso (F)</strong> — nunca os dois ao mesmo tempo, nem nenhum dos dois.</p>
+
+      <p>Para ser uma proposição, a frase precisa:</p>
+      <ol>
+        <li>Ter estrutura de oração (sujeito + predicado + verbo);</li>
+        <li>Ser <strong>declarativa/afirmativa</strong> — nunca imperativa, interrogativa ou exclamativa;</li>
+        <li>Obedecer a três princípios da lógica (ver abaixo).</li>
+      </ol>
+
+      <div class="principios">
+        <div class="principio">
+          <h3>Terceiro excluído</h3>
+          <p>Toda proposição é verdadeira ou falsa, nunca existe uma terceira opção.</p>
+        </div>
+        <div class="principio">
+          <h3>Não contradição</h3>
+          <p>Uma proposição não pode ser verdadeira e falsa ao mesmo tempo.</p>
+        </div>
+        <div class="principio">
+          <h3>Identidade</h3>
+          <p>Uma proposição verdadeira é sempre verdadeira; uma falsa é sempre falsa.</p>
+        </div>
+      </div>
+
+      <div class="callout callout--dica">
+        <div class="callout__titulo">Lógica bivalente</div>
+        <p>Como cada proposição só pode assumir um entre dois valores possíveis, dizemos que a
+           lógica proposicional é <strong>bivalente</strong>.</p>
+      </div>
+
+      <h3>Exemplos</h3>
+      <div class="duas-colunas">
+        <div class="coluna coluna--sim">
+          <h3>São proposições</h3>
+          <ul>
+            <li>"O número 10 é par." <span class="valor-proposicao">— verdadeira</span> <span class="badge badge--v">V</span></li>
+            <li>"Todo quadrado é um retângulo." <span class="valor-proposicao">— verdadeira</span> <span class="badge badge--v">V</span></li>
+            <li>"A Lua é maior que a Terra." <span class="valor-proposicao">— falsa</span> <span class="badge badge--f">F</span></li>
+            <li>"Recife é a capital do Rio de Janeiro." <span class="valor-proposicao">— falsa</span> <span class="badge badge--f">F</span></li>
+          </ul>
+        </div>
+        <div class="coluna coluna--nao">
+          <h3>NÃO são proposições</h3>
+          <ul>
+            <li>"Que dia lindo!" <span class="valor-proposicao">— exclamativa</span></li>
+            <li>"Você já almoçou?" <span class="valor-proposicao">— interrogativa</span></li>
+            <li>"Feche a porta." <span class="valor-proposicao">— imperativa</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Proposição simples (ou atômica)</h3>
+      <p><strong>Proposição simples</strong> é aquela que <strong>não contém nenhuma outra
+         proposição dentro dela</strong> — é uma sentença "de uma peça só", sem conectivos
+         ligando outras sentenças.</p>
+      <ul>
+        <li>Representamos proposições simples por <strong>letras minúsculas</strong>: p, q, r, s, …</li>
+        <li>O valor lógico de uma proposição simples p é indicado por <strong>V(p)</strong>.</li>
+        <li>Por isso, proposições simples também são chamadas de <strong>variáveis proposicionais</strong>.</li>
+      </ul>
+
+      <div class="exemplo">
+        <span class="exemplo__rotulo">Exemplo</span>
+        <p>p: "O gato dormiu o dia todo."</p>
+        <p>Essa frase é declarativa, tem valor V ou F, e não é formada pela junção de outras
+           proposições — logo, é uma proposição simples.</p>
+      </div>
+
+      <div class="callout callout--dica">
+        <div class="callout__titulo">Por que isso importa</div>
+        <p>Toda proposição composta (próximo tópico) é construída a partir de proposições simples
+           unidas por <strong>conectivos lógicos</strong>. Entender proposição simples é a base
+           para tudo que vem depois: conectivos, tradução para linguagem simbólica e
+           tabelas-verdade.</p>
+      </div>
+
+      <div class="quiz" data-quiz="proposicoes-simples" aria-label="Quiz de Proposições Simples"></div>
+
+      <a class="proximo" href="#proposicoes-compostas">Próximo tópico →</a>
+    </section>
+
+    <!-- ====== SEÇÃO 2: PROPOSIÇÕES COMPOSTAS ====== -->
+    <section id="proposicoes-compostas">
+      <h2>2. Proposições Compostas</h2>
+
+      <h3>Definição</h3>
+      <p><strong>Proposição composta (ou molecular)</strong> é aquela formada pela
+         <strong>combinação de duas ou mais proposições simples</strong>, ligadas por palavras
+         de conexão.</p>
+      <ul>
+        <li>Representamos proposições compostas por <strong>letras maiúsculas</strong>: P, Q, R, S, …</li>
+        <li>Quando queremos deixar explícito quais proposições simples formam a composta, escrevemos:
+          <p class="formula" style="font-size:1.1rem; margin:.4em 0;">P(p₁, p₂, …, pₙ)</p>
+          para indicar que a proposição composta P é formada pelas n proposições simples
+          p₁, p₂, …, pₙ.</li>
+        <li>Proposições compostas também são chamadas de <strong>fórmulas proposicionais</strong> (ou apenas <strong>fórmulas</strong>).</li>
+      </ul>
+
+      <h3>O que conecta as proposições simples?</h3>
+      <p>Toda proposição composta existe porque duas ou mais proposições simples foram unidas por
+         <strong>conectivos lógicos</strong> (ex: "e", "ou", "se… então"). É exatamente a presença
+         de um conectivo que transforma uma proposição em composta — sem conectivo, ela continua
+         simples.</p>
+
+      <div class="exemplo">
+        <span class="exemplo__rotulo">Exemplo</span>
+        <p>Q: "Ana estuda de manhã e trabalha à tarde."</p>
+        <p>Aqui temos duas ideias simples ligadas pela palavra "e":</p>
+        <p>p: "Ana estuda de manhã."<br>
+           q: "Ana trabalha à tarde."</p>
+        <p>Como Q é formada pela junção de p e q através de um conectivo, Q é uma
+           <strong>proposição composta</strong>: Q(p, q).</p>
+      </div>
+
+      <h3>Simples vs. Composta — resumo comparativo</h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Proposição Simples</th><th scope="col">Proposição Composta</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Notação</strong></td><td>letras minúsculas (p, q, r…)</td><td>letras maiúsculas (P, Q, R…)</td></tr>
+            <tr><td><strong>Contém outra proposição dentro?</strong></td><td>Não</td><td>Sim (duas ou mais)</td></tr>
+            <tr><td><strong>Precisa de conectivo?</strong></td><td>Não</td><td>Sim, sempre</td></tr>
+            <tr><td><strong>Exemplo</strong></td><td>p: "Choveu hoje."</td><td>P: "Choveu hoje e o jogo foi cancelado."</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--dica">
+        <div class="callout__titulo">Dica para identificar em provas</div>
+        <p>Se a frase tem uma palavra como <em>e, ou, se…então, se e somente se</em> ou começa com
+           <em>não</em> ligando/alterando outra ideia, ela é composta. Se é uma única afirmação
+           isolada, é simples.</p>
+      </div>
+
+      <div class="quiz" data-quiz="proposicoes-compostas" aria-label="Quiz de Proposições Compostas"></div>
+
+      <a class="proximo" href="#conectivos">Próximo tópico →</a>
+    </section>
+
+    <!-- ====== SEÇÃO 3: CONECTIVOS LÓGICOS ====== -->
+    <section id="conectivos">
+      <h2>3. Conectivos Lógicos</h2>
+
+      <h3>O que são</h3>
+      <p><strong>Conectivos lógicos</strong> (também chamados de <strong>operadores lógicos</strong>)
+         são as palavras que ligam proposições simples para formar proposições compostas. É a
+         partir deles que se define se o resultado da combinação será verdadeiro ou falso.</p>
+      <p>Na lógica matemática, cada conectivo tem uma palavra-chave da linguagem natural e um
+         símbolo correspondente na linguagem simbólica.</p>
+
+      <h3>Tabela dos conectivos</h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr><th scope="col">Conectivo (linguagem natural)</th><th scope="col">Símbolo</th><th scope="col">Nome da operação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>e</strong></td><td class="formula" style="font-size:1.4rem;">∧</td><td>Conjunção</td></tr>
+            <tr><td><strong>ou</strong></td><td class="formula" style="font-size:1.4rem;">∨</td><td>Disjunção (inclusiva)</td></tr>
+            <tr><td><strong>ou … ou</strong></td><td class="formula" style="font-size:1.4rem;">⊻</td><td>Disjunção exclusiva</td></tr>
+            <tr><td><strong>se …, então</strong></td><td class="formula" style="font-size:1.4rem;">→</td><td>Condicional</td></tr>
+            <tr><td><strong>se, e somente se,</strong></td><td class="formula" style="font-size:1.4rem;">↔</td><td>Bicondicional</td></tr>
+            <tr><td><strong>não</strong></td><td class="formula" style="font-size:1.4rem;">∼</td><td>Negação</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>O que cada um significa</h3>
+      <div class="grid-conectivos">
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">∧</span>
+          <div class="conectivo-card__nome">Conjunção</div>
+          <p>"p e q". Liga duas ideias que precisam ser <strong>ambas verdadeiras</strong> para que
+             o todo seja verdadeiro.<br><em>Ex.: "Marcos é aluno e Marcos é atleta."</em></p>
+        </div>
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">∨</span>
+          <div class="conectivo-card__nome">Disjunção inclusiva</div>
+          <p>"p ou q". Basta que <strong>pelo menos uma</strong> das duas seja verdadeira para o
+             todo ser verdadeiro (podem ser as duas).<br><em>Ex.: "Marcos é aluno ou Marcos é atleta."</em></p>
+        </div>
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">⊻</span>
+          <div class="conectivo-card__nome">Disjunção exclusiva</div>
+          <p>"ou p ou q". Exatamente <strong>uma das duas</strong>, nunca as duas ao mesmo tempo e
+             nunca nenhuma.<br><em>Ex.: "Ou Marcos nasceu em janeiro ou nasceu em fevereiro."</em></p>
+        </div>
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">→</span>
+          <div class="conectivo-card__nome">Condicional</div>
+          <p>"se p, então q". Estabelece uma relação em que p é <strong>condição suficiente</strong>
+             para q, e q é <strong>condição necessária</strong> para p.<br><em>Ex.: "Se chover, então a rua fica molhada."</em></p>
+        </div>
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">↔</span>
+          <div class="conectivo-card__nome">Bicondicional</div>
+          <p>"p se, e somente se, q". As duas proposições têm o <strong>mesmo valor lógico</strong>
+             sempre — é como uma "via de mão dupla" entre duas condicionais.<br><em>Ex.: "Um número é par se, e somente se, é divisível por 2."</em></p>
+        </div>
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">∼</span>
+          <div class="conectivo-card__nome">Negação</div>
+          <p>"não p". Inverte o valor lógico de uma proposição (não cria uma proposição composta no
+             sentido de "juntar duas sentenças", mas é tratada como conectivo por alterar o valor
+             lógico da proposição original).<br><em>Ex.: "Não choveu hoje."</em></p>
+        </div>
+      </div>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">Observação importante</div>
+        <p>Algumas bancas de concurso e provas usam palavras alternativas para os mesmos
+           conectivos. Fique atento a sinônimos como <em>mas, todavia, contudo, no entanto,
+           apesar de</em> — todas essas palavras, no sentido lógico, costumam funcionar como uma
+           <strong>conjunção (∧)</strong>.</p>
+      </div>
+
+      <div class="callout callout--dica">
+        <div class="callout__titulo">E os valores V/F?</div>
+        <p>O valor exato de cada conectivo (quando cada um dá verdadeiro ou falso) é detalhado no
+           tópico <a href="#tabelas-verdade">Tabelas-Verdade</a>.</p>
+      </div>
+
+      <div class="quiz" data-quiz="conectivos" aria-label="Quiz de Conectivos Lógicos"></div>
+
+      <a class="proximo" href="#traducao">Próximo tópico →</a>
+    </section>
+
+    <!-- ====== SEÇÃO 4: LINGUAGEM NATURAL ↔ SIMBÓLICA ====== -->
+    <section id="traducao">
+      <h2>4. Linguagem Natural ↔ Linguagem Simbólica</h2>
+
+      <div class="callout callout--dica">
+        <div class="callout__titulo">Por que isso é importante</div>
+        <p>Questões de raciocínio lógico raramente aparecem já em símbolos — normalmente vêm como
+           uma frase em português, e é preciso "traduzir" para símbolos (p, q, ∧, ∨, →…) antes de
+           resolver. Depois, muitas vezes é preciso fazer o caminho inverso: interpretar uma
+           fórmula simbólica em português. Dominar essa via de mão dupla é essencial antes de
+           montar tabelas-verdade.</p>
+      </div>
+
+      <h3>Método para traduzir de natural → simbólica</h3>
+      <ol>
+        <li><strong>Identifique as proposições simples</strong> dentro da frase (cada ideia isolada, com valor V/F).</li>
+        <li><strong>Atribua uma letra minúscula</strong> para cada uma (p, q, r…).</li>
+        <li><strong>Identifique o conectivo</strong> que liga as ideias (e, ou, se…então, se e somente se, não).</li>
+        <li><strong>Monte a fórmula</strong> substituindo as ideias pelas letras e o conectivo pelo símbolo.</li>
+      </ol>
+
+      <h3>Exemplos: natural → simbólica</h3>
+
+      <div class="exemplo-natural">
+        <div class="exemplo-natural__frase">Conjunção (e → ∧)</div>
+        <p>"Bianca fala inglês e fala espanhol."</p>
+        <div class="exemplo-natural__linhas">
+          <div>p: Bianca fala inglês.</div>
+          <div>q: Bianca fala espanhol.</div>
+          <div>Fórmula: <span class="formula">p ∧ q</span></div>
+        </div>
+      </div>
+
+      <div class="exemplo-natural">
+        <div class="exemplo-natural__frase">Disjunção inclusiva (ou → ∨)</div>
+        <p>"O prêmio será dinheiro ou será uma viagem."</p>
+        <div class="exemplo-natural__linhas">
+          <div>p: O prêmio será dinheiro.</div>
+          <div>q: O prêmio será uma viagem.</div>
+          <div>Fórmula: <span class="formula">p ∨ q</span></div>
+        </div>
+      </div>
+
+      <div class="exemplo-natural">
+        <div class="exemplo-natural__frase">Disjunção exclusiva (ou…ou → ⊻)</div>
+        <p>"Ou você estuda de manhã ou você estuda à noite." <em>(as duas opções se excluem)</em></p>
+        <div class="exemplo-natural__linhas">
+          <div>p: Você estuda de manhã.</div>
+          <div>q: Você estuda à noite.</div>
+          <div>Fórmula: <span class="formula">p ⊻ q</span></div>
+        </div>
+      </div>
+
+      <div class="exemplo-natural">
+        <div class="exemplo-natural__frase">Condicional (se…então → →)</div>
+        <p>"Se o carro está sem combustível, então ele não liga."</p>
+        <div class="exemplo-natural__linhas">
+          <div>p: O carro está sem combustível.</div>
+          <div>q: Ele não liga.</div>
+          <div>Fórmula: <span class="formula">p → q</span></div>
+        </div>
+      </div>
+
+      <p>A condicional também pode aparecer disfarçada, sem a palavra "se" no início:</p>
+      <ul>
+        <li>"q, se p" → <span class="formula">p → q</span></li>
+        <li>"Quando p, q" → <span class="formula">p → q</span></li>
+      </ul>
+
+      <div class="exemplo-natural">
+        <div class="exemplo-natural__frase">Bicondicional (se e somente se → ↔)</div>
+        <p>"Um triângulo é equilátero se, e somente se, seus três lados são iguais."</p>
+        <div class="exemplo-natural__linhas">
+          <div>p: O triângulo é equilátero.</div>
+          <div>q: Seus três lados são iguais.</div>
+          <div>Fórmula: <span class="formula">p ↔ q</span></div>
+        </div>
+      </div>
+
+      <div class="exemplo-natural">
+        <div class="exemplo-natural__frase">Negação (não → ∼)</div>
+        <p>"O time não venceu a partida."</p>
+        <div class="exemplo-natural__linhas">
+          <div>p: O time venceu a partida.</div>
+          <div>Fórmula: <span class="formula">∼p</span></div>
+        </div>
+      </div>
+
+      <h3>Exemplos: simbólica → natural</h3>
+      <p>Fazendo o caminho inverso, atribuindo:</p>
+      <ul>
+        <li>p: "Júlia estuda música."</li>
+        <li>q: "Júlia toca piano."</li>
+      </ul>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr><th scope="col">Fórmula</th><th scope="col">Leitura em linguagem natural</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="formula">p ∧ q</td><td>Júlia estuda música e toca piano.</td></tr>
+            <tr><td class="formula">p ∨ q</td><td>Júlia estuda música ou toca piano.</td></tr>
+            <tr><td class="formula">p ⊻ q</td><td>Ou Júlia estuda música ou toca piano (não as duas).</td></tr>
+            <tr><td class="formula">p → q</td><td>Se Júlia estuda música, então ela toca piano.</td></tr>
+            <tr><td class="formula">p ↔ q</td><td>Júlia estuda música se, e somente se, toca piano.</td></tr>
+            <tr><td class="formula">∼p</td><td>Júlia não estuda música.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">Pegadinhas comuns</div>
+        <ul>
+          <li><strong>"ou" nem sempre é inclusivo.</strong> Se as opções da frase se excluem naturalmente (ex.: "Rosa nasceu na Itália ou nasceu no Brasil" — ninguém nasce em dois lugares), trate como disjunção exclusiva (⊻), mesmo que a frase só use a palavra "ou".</li>
+          <li><strong>Condição necessária vs. suficiente</strong>, na condicional p → q: p é <strong>condição suficiente</strong> para q; q é <strong>condição necessária</strong> para p.</li>
+          <li><strong>Sinônimos de conjunção</strong>: mas, todavia, contudo, no entanto, apesar de → todos viram ∧.</li>
+          <li><strong>Sinônimos de negação</strong>: "não é verdade que…", "é falso que…" → também viram ∼.</li>
+        </ul>
+      </div>
+
+      <div class="quiz" data-quiz="traducao" aria-label="Quiz de Linguagem Natural e Simbólica"></div>
+
+      <a class="proximo" href="#tabelas-verdade">Próximo tópico →</a>
+    </section>
+
+    <!-- ====== SEÇÃO 5: TABELAS-VERDADE ====== -->
+    <section id="tabelas-verdade">
+      <h2>5. Tabelas-Verdade</h2>
+
+      <h3>O que é</h3>
+      <p>Uma <strong>tabela-verdade</strong> é um dispositivo que lista <strong>todas as
+         combinações possíveis</strong> de valores lógicos (V ou F) das proposições simples que
+         compõem uma proposição composta, e o valor lógico resultante da composta em cada
+         combinação.</p>
+      <p>Ela existe por causa do <strong>princípio do terceiro excluído</strong>: cada proposição
+         simples só pode ser V ou F — então dá para listar exaustivamente todas as combinações
+         possíveis.</p>
+
+      <h3>Quantas linhas a tabela tem?</h3>
+      <p><strong>Teorema:</strong> a tabela-verdade de uma proposição composta com <strong>n</strong>
+         proposições simples contém <strong>2ⁿ linhas</strong>.</p>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr><th scope="col">Nº de proposições simples (n)</th><th scope="col">Linhas (2ⁿ)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>2</td></tr>
+            <tr><td>2</td><td>4</td></tr>
+            <tr><td>3</td><td>8</td></tr>
+            <tr><td>4</td><td>16</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Tabela com 2 proposições (p, q)</h3>
+      <div class="tabela-card">
+        <table>
+          <thead><tr><th scope="col">p</th><th scope="col">q</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Tabela com 3 proposições (p, q, r)</h3>
+      <div class="tabela-card">
+        <table>
+          <thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">r</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Padrão de preenchimento</strong>: para a k-ésima proposição (contando da esquerda),
+         os valores V e F se alternam em blocos de tamanho 2ⁿ⁻ᵏ. Ou seja: a 1ª coluna alterna em
+         blocos grandes (metade V, metade F), a 2ª coluna em blocos menores, e assim sucessivamente
+         até a última coluna, que alterna V e F linha a linha.</p>
+
+      <h3>Tabela-verdade de cada conectivo</h3>
+
+      <div class="grid-conectivos">
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">∧</span>
+          <div class="conectivo-card__nome">Conjunção (p ∧ q)</div>
+          <p style="font-size:.85rem; color:var(--texto-suave);">só é V quando as duas são V</p>
+          <div class="tabela-card" style="margin:10px 0 0; box-shadow:none;">
+            <table>
+              <thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">p ∧ q</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">∨</span>
+          <div class="conectivo-card__nome">Disjunção inclusiva (p ∨ q)</div>
+          <p style="font-size:.85rem; color:var(--texto-suave);">só é F quando as duas são F</p>
+          <div class="tabela-card" style="margin:10px 0 0; box-shadow:none;">
+            <table>
+              <thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">p ∨ q</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">⊻</span>
+          <div class="conectivo-card__nome">Disjunção exclusiva (p ⊻ q)</div>
+          <p style="font-size:.85rem; color:var(--texto-suave);">V quando os valores são diferentes</p>
+          <div class="tabela-card" style="margin:10px 0 0; box-shadow:none;">
+            <table>
+              <thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">p ⊻ q</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">→</span>
+          <div class="conectivo-card__nome">Condicional (p → q)</div>
+          <p style="font-size:.85rem; color:var(--texto-suave);">só é F quando p é V e q é F</p>
+          <div class="tabela-card" style="margin:10px 0 0; box-shadow:none;">
+            <table>
+              <thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">p → q</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">↔</span>
+          <div class="conectivo-card__nome">Bicondicional (p ↔ q)</div>
+          <p style="font-size:.85rem; color:var(--texto-suave);">V quando os valores são iguais</p>
+          <div class="tabela-card" style="margin:10px 0 0; box-shadow:none;">
+            <table>
+              <thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">p ↔ q</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="conectivo-card">
+          <span class="conectivo-card__simbolo">∼</span>
+          <div class="conectivo-card__nome">Negação (∼p)</div>
+          <p style="font-size:.85rem; color:var(--texto-suave);">inverte o valor</p>
+          <div class="tabela-card" style="margin:10px 0 0; box-shadow:none;">
+            <table>
+              <thead><tr><th scope="col">p</th><th scope="col">∼p</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+                <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <h3>Tabela-resumo: quando cada conectivo dá V ou F</h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr><th scope="col">Estrutura</th><th scope="col">É verdade quando…</th><th scope="col">É falsidade quando…</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="formula">p ∧ q</td><td>p e q são ambos verdadeiros</td><td>pelo menos um dos dois é falso</td></tr>
+            <tr><td class="formula">p ∨ q</td><td>pelo menos um dos dois é verdadeiro</td><td>p e q são ambos falsos</td></tr>
+            <tr><td class="formula">p ⊻ q</td><td>p e q têm valores diferentes</td><td>p e q têm valores iguais</td></tr>
+            <tr><td class="formula">p → q</td><td>em todos os casos, exceto um</td><td>p é verdadeiro e q é falso</td></tr>
+            <tr><td class="formula">p ↔ q</td><td>p e q têm valores iguais</td><td>p e q têm valores diferentes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Ordem de precedência dos conectivos</h3>
+      <p>Quando a proposição composta <strong>não tem parênteses</strong>, resolva na seguinte ordem:</p>
+      <ol>
+        <li><strong>∼</strong> (negação)</li>
+        <li><strong>∧</strong> ou <strong>∨</strong> (conjunção/disjunção)</li>
+        <li><strong>→</strong> (condicional)</li>
+        <li><strong>↔</strong> (bicondicional)</li>
+      </ol>
+      <p>Se <strong>houver parênteses, colchetes ou chaves</strong>, resolva sempre de dentro para fora.</p>
+
+      <h3>Exemplo resolvido: construindo uma tabela-verdade</h3>
+      <p>Construa a tabela-verdade de: <span class="formula">P(p, q, r) = (p ∧ ∼r) → q</span></p>
+
+      <p><strong>Passo 1 — contar proposições simples:</strong> temos p, q, r → n = 3 → 2³ = 8 linhas.</p>
+      <p><strong>Passo 2 — montar as colunas de p, q, r e as colunas intermediárias:</strong></p>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">p</th><th scope="col">q</th><th scope="col">r</th>
+              <th scope="col">∼r</th><th scope="col">(p ∧ ∼r)</th><th scope="col">(p ∧ ∼r) → q</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Passo 3 — ler o resultado:</strong> a última coluna é o valor lógico de P(p, q, r)
+         em cada uma das 8 combinações possíveis de p, q e r.</p>
+
+      <div class="callout callout--dica">
+        <div class="callout__titulo">Conexão com o próximo passo</div>
+        <p>Depois de saber montar tabelas-verdade, dá pra classificar uma proposição composta como
+           <strong>tautologia</strong> (sempre V), <strong>contradição</strong> (sempre F) ou
+           <strong>contingência</strong> (V e F dependendo do caso) — mas isso já é conteúdo para
+           uma próxima aula.</p>
+      </div>
+
+      <div class="quiz" data-quiz="tabelas-verdade" aria-label="Quiz de Tabelas-Verdade"></div>
+
+      <a class="proximo" href="#trilha">Próximo tópico →</a>
+    </section>
+
+    <!-- ====== SEÇÃO 6: TRILHA ====== -->
+    <section id="trilha">
+      <h2>6. Trilha: da frase à tabela-verdade</h2>
+      <p>Acompanhe a mesma frase passando pelas três etapas que vimos: do português ao símbolo, e
+         do símbolo à tabela-verdade.</p>
+
+      <div class="callout callout--dica">
+        <div class="callout__titulo">Frase de partida</div>
+        <p><strong>"Se o carro está sem combustível, então ele não liga."</strong></p>
+      </div>
+
+      <div class="trilha">
+        <div class="trilha__etapa">
+          <div class="trilha__num">1</div>
+          <div class="trilha__titulo">Frase em português</div>
+          <div class="trilha__conteudo">"Se o carro está sem combustível, então ele não liga."</div>
+        </div>
+        <div class="trilha__etapa">
+          <div class="trilha__num">2</div>
+          <div class="trilha__titulo">Proposições simples</div>
+          <div class="trilha__conteudo">
+            <strong>p:</strong> O carro está sem combustível.<br>
+            <strong>q:</strong> Ele não liga.
+          </div>
+        </div>
+        <div class="trilha__etapa">
+          <div class="trilha__num">3</div>
+          <div class="trilha__titulo">Conectivo identificado</div>
+          <div class="trilha__conteudo">"se …, então" → <span class="formula">→</span> (condicional)</div>
+        </div>
+        <div class="trilha__etapa">
+          <div class="trilha__num">4</div>
+          <div class="trilha__titulo">Fórmula</div>
+          <div class="trilha__conteudo"><span class="formula">p → q</span></div>
+        </div>
+        <div class="trilha__etapa">
+          <div class="trilha__num">5</div>
+          <div class="trilha__titulo">Tabela-verdade</div>
+          <div class="trilha__conteudo">
+            <div class="tabela-card" style="margin:8px 0 0; box-shadow:none;">
+              <table>
+                <thead><tr><th scope="col">p</th><th scope="col">q</th><th scope="col">p → q</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                  <tr class="destaque-linha-falsa"><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+                  <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+                  <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size:.82rem; margin-top:6px;">A única linha F é quando p é V e q é F.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/script.js" defer></script>
+</body>
+</html>
