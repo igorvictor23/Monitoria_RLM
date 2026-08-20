@@ -99,6 +99,8 @@ code, .formula {
   margin-bottom: 4px;
   padding: 0 8px;
 }
+a.sidebar__marca { text-decoration: none; cursor: pointer; }
+a.sidebar__marca:hover { text-decoration: none; opacity: .85; }
 .sidebar__sub {
   font-size: .8rem;
   color: var(--texto-suave);
