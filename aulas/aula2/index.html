@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 1 — Exercícios · Monitoria de RLM</title>
+  <meta name="description" content="Lista de exercícios de Raciocínio Lógico e Matemático: proposições compostas, tradução entre linguagens, valoração lógica e construção de tabelas-verdade.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+
+<div class="barra-progresso" id="barra-progresso" aria-hidden="true"></div>
+
+<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="../../index.html" class="sidebar__marca" aria-label="Voltar ao hub principal das aulas">📘 Monitoria de RLM</a>
+    <div class="sidebar__sub">Aula 1 — Exercícios</div>
+    <nav aria-label="Navegação por partes da lista">
+      <ul class="sidebar__nav">
+        <li><a href="#inicio" aria-current="true">Início</a></li>
+        <li><a href="#parte1">1. Conceitos e Tradução</a></li>
+        <li><a href="#parte2">2. Valoração Lógica</a></li>
+        <li><a href="#parte3">3. Tabelas-Verdade</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============ CONTEÚDO ============ -->
+  <main class="conteudo">
+
+    <!-- ====== SEÇÃO INÍCIO ====== -->
+    <section id="inicio">
+      <div class="hero">
+        <h1>Aula 1 — Exercícios</h1>
+        <p class="hero__sub">Raciocínio Lógico e Matemático</p>
+        <p>Esta lista reúne <strong>30 questões de múltipla escolha</strong> e
+           <strong>5 exercícios abertos</strong> de construção de tabelas-verdade. As questões
+           1–15 trabalham conceitos e tradução entre linguagens; as questões 16–30 são de
+           valoração lógica (V/F); e os exercícios 31–35 pedem a tabela-verdade completa de
+           expressões com 3 variáveis (p, q, r).</p>
+        <p>Use o menu ao lado para navegar entre as partes. Nas partes 1 e 2, ao clicar numa
+           alternativa o sistema revela se você acertou e mostra a explicação. Na parte 3, a tabela-verdade completa já
+           está montada para conferência.</p>
+        <!-- opcional: monitor / horário / contato -->
+      </div>
+    </section>
+
+    <!-- ====== SEÇÃO 1: PARTE 1 ====== -->
+    <section id="parte1">
+      <h2>Parte 1 — Conceitos e Tradução</h2>
+      <p>15 questões de múltipla escolha sobre proposições simples/compostas e tradução entre
+         linguagem natural e simbólica.</p>
+
+      <div class="quiz" data-quiz="exercicios-parte1" aria-label="Quiz da Parte 1 — Conceitos e Tradução"></div>
+    </section>
+
+    <!-- ====== SEÇÃO 2: PARTE 2 ====== -->
+    <section id="parte2">
+      <h2>Parte 2 — Valoração Lógica</h2>
+
+      <p>Considere que as proposições simples têm os seguintes valores lógicos:</p>
+      <ul>
+        <li><strong>Questões 16 a 22:</strong> p é VERDADEIRO (V), q é FALSO (F), r é VERDADEIRO (V).</li>
+        <li><strong>Questões 23 a 30:</strong> p é FALSO (F), q é FALSO (F), r é VERDADEIRO (V).</li>
+      </ul>
+
+      <div class="quiz" data-quiz="exercicios-parte2" aria-label="Quiz da Parte 2 — Valoração Lógica"></div>
+    </section>
+
+    <!-- ====== SEÇÃO 3: PARTE 3 — TABELAS-VERDADE ====== -->
+    <section id="parte3">
+      <h2>Parte 3 — Construção de Tabelas-Verdade</h2>
+      <p>Monte a tabela-verdade completa para cada proposição abaixo. Lembre-se: são 8 linhas
+         para as combinações de p, q e r, e a resolução segue a ordem de precedência
+         (parênteses → negações → demais conectivos). <em>Padrão de linhas assumido para p, q, r
+         nesta ordem: VVV, VVF, VFV, VFF, FVV, FVF, FFV, FFF.</em></p>
+
+      <!-- Exercício 31 -->
+      <h3>31. <span class="formula">P(p, q, r) = p → (q ∧ r)</span></h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">p</th>
+              <th scope="col">q</th>
+              <th scope="col">r</th>
+              <th scope="col">q ∧ r</th>
+              <th scope="col">p → (q ∧ r)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exercício 32 -->
+      <h3>32. <span class="formula">P(p, q, r) = (p ∨ q) ↔ ∼r</span></h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">p</th>
+              <th scope="col">q</th>
+              <th scope="col">r</th>
+              <th scope="col">p ∨ q</th>
+              <th scope="col">∼r</th>
+              <th scope="col">(p ∨ q) ↔ ∼r</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exercício 33 -->
+      <h3>33. <span class="formula">P(p, q, r) = (p ∧ ∼q) → r</span></h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">p</th>
+              <th scope="col">q</th>
+              <th scope="col">r</th>
+              <th scope="col">∼q</th>
+              <th scope="col">p ∧ ∼q</th>
+              <th scope="col">(p ∧ ∼q) → r</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exercício 34 -->
+      <h3>34. <span class="formula">P(p, q, r) = ∼(p ⊻ q) ∨ r</span></h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">p</th>
+              <th scope="col">q</th>
+              <th scope="col">r</th>
+              <th scope="col">p ⊻ q</th>
+              <th scope="col">∼(p ⊻ q)</th>
+              <th scope="col">∼(p ⊻ q) ∨ r</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exercício 35 -->
+      <h3>35. <span class="formula">P(p, q, r) = (p → r) ∧ (q → r)</span></h3>
+      <div class="tabela-card">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">p</th>
+              <th scope="col">q</th>
+              <th scope="col">r</th>
+              <th scope="col">p → r</th>
+              <th scope="col">q → r</th>
+              <th scope="col">(p → r) ∧ (q → r)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+            <tr><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--f">F</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td><td><span class="badge badge--v">V</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/script.js" defer></script>
+</body>
+</html>
