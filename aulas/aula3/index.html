@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 2 — Tabelas-Verdade e Propriedades · Monitoria de RLM</title>
+  <meta name="description" content="Aula teórica sobre construção de tabelas-verdade, fórmula 2ⁿ, e classificação de proposições: tautologia, contradição e contingência.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+
+<div class="barra-progresso" id="barra-progresso" aria-hidden="true"></div>
+
+<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="../../index.html" class="sidebar__marca" aria-label="Voltar ao hub principal das aulas">📘 Monitoria de RLM</a>
+    <div class="sidebar__sub">Aula 2 — Tabelas-Verdade e Propriedades</div>
+    <nav aria-label="Navegação por partes da aula">
+      <ul class="sidebar__nav">
+        <li><a href="#inicio" aria-current="true">Início</a></li>
+        <li><a href="#recapitulando">1. Recapitulando</a></li>
+        <li><a href="#construcao">2. Construção de Tabelas</a></li>
+        <li><a href="#tautologia">3. Tautologia</a></li>
+        <li><a href="#contradicao">4. Contradição</a></li>
+        <li><a href="#contingencia">5. Contingência</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============ CONTEÚDO ============ -->
+  <main class="conteudo">
+
+    <!-- ====== SEÇÃO INÍCIO ====== -->
+    <section id="inicio">
+      <div class="hero">
+        <h1>Aula 2 — Tabelas-Verdade e Propriedades</h1>
+        <p class="hero__sub">Raciocínio Lógico e Matemático</p>
+        <p>Esta aula apresenta a <strong>construção de tabelas-verdade</strong>, o teorema das
+           <strong>2ⁿ linhas</strong> e as <strong>três propriedades</strong> das proposições
+           compostas: <strong>tautologia</strong>, <strong>contradição</strong> e
+           <strong>contingência</strong>. Ao final, você poderá classificar qualquer expressão
+           lógica a partir da coluna final da sua tabela-verdade.</p>
+        <p>Use o menu ao lado para navegar entre os tópicos. Cada tabela foi conferida célula
+           a célula conforme a apostila da disciplina.</p>
+
+        <div class="cards-indice">
+          <a class="card-indice" href="#recapitulando">
+            <span class="card-indice__num">1</span>
+            <div class="card-indice__titulo">Recapitulando</div>
+            <p class="card-indice__resumo">O que é tabela-verdade, teorema 2ⁿ e fórmula do número de colunas.</p>
+          </a>
+          <a class="card-indice" href="#construcao">
+            <span class="card-indice__num">2</span>
+            <div class="card-indice__titulo">Construção de Tabelas</div>
+            <p class="card-indice__resumo">Exemplo completo passo a passo: S(p,q,r) = (p ∧ q → ∼r) ∨ ∼q.</p>
+          </a>
+          <a class="card-indice" href="#tautologia">
+            <span class="card-indice__num">3</span>
+            <div class="card-indice__titulo">Tautologia</div>
+            <p class="card-indice__resumo">Definição, princípio da não contradição e exemplo ∼(p ∧ ∼p).</p>
+          </a>
+          <a class="card-indice" href="#contradicao">
+            <span class="card-indice__num">4</span>
+            <div class="card-indice__titulo">Contradição</div>
+            <p class="card-indice__resumo">Definição, exemplo (p → q) ∧ (q → r) ∧ p ∧ ∼r com 8 linhas.</p>
+          </a>
+          <a class="card-indice" href="#contingencia">
+            <span class="card-indice__num">5</span>
+            <div class="card-indice__titulo">Contingência</div>
+            <p class="card-indice__resumo">Definição, exemplo p ∨ (q ∧ ∼r) e tabela comparativa final.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SEÇÃO 1: RECAPITULANDO ====== -->
+    <section id="recapitulando">
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Recapitulando</div>
+        <p>Uma <strong>tabela-verdade</strong> é o dispositivo que lista, de forma organizada,
+           <strong>todas as combinações possíveis</strong> de valores V/F (verdadeiro ou falso)
+           das proposições simples que compõem uma expressão lógica.</p>
+        <p>Por exemplo, para <span class="formula">P(p, q)</span>, a tabela mostra as 4 combinações:
+           (V,V), (V,F), (F,V), (F,F). Cada linha representa um caso possível.</p>
+      </div>
+
+      <h2>Quantas linhas uma tabela-verdade tem?</h2>
+      <p><strong>Teorema:</strong> Para uma proposição composta com <strong>n</strong> proposições simples
+           componentes, a tabela-verdade terá <strong>2ⁿ linhas</strong>.</p>
+      <p><strong>Por que isso acontece?</strong> Cada proposição simples pode assumir V ou F, de forma
+           independente. Ao adicionar uma nova proposição, todas as combinações existentes "dobram":
+           1 proposição = 2 casos; 2 proposições = 4 casos; 3 proposições = 8 casos; e assim por
+           diante.</p>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">n (prop. simples)</th>
+            <th scope="col">2ⁿ (linhas)</th>
+            <th scope="col">Visualização</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>V, F</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>4</td>
+            <td>VV, VF, FV, FF</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>8</td>
+            <td>VVV, VVF, VFV, VFF, FVV, FVF, FFV, FFF</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>16</td>
+            <td>...</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ====== SEÇÃO 2: CONSTRUÇÃO ====== -->
+    <section id="construcao">
+      <h2>Construção passo a passo</h2>
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Exemplo: S(p, q, r) = (p ∧ q → ∼r) ∨ ∼q</div>
+        <p>Vamos montar a tabela-verdade desta expressão com 3 proposições simples (p, q, r).</p>
+      </div>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">q</th>
+            <th scope="col">r</th>
+            <th scope="col">∼r</th>
+            <th scope="col">p ∧ q</th>
+            <th scope="col">(p ∧ q) → ∼r</th>
+            <th scope="col">∼q</th>
+            <th scope="col"><strong>Resultado</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f"><strong>F</strong></span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v"><strong>V</strong></span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v"><strong>V</strong></span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v"><strong>V</strong></span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v"><strong>V</strong></span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v"><strong>V</strong></span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v"><strong>V</strong></span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v"><strong>V</strong></span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Resumo: esta tabela tem 7 valores V e 1 valor F — portanto, não é sempre V nem sempre F,
+           o que a caracteriza de <strong>contingência</strong>.</p>
+    </section>
+
+    <!-- ====== SEÇÃO 3: TAUTOLGIA ====== -->
+    <section id="tautologia">
+      <h2>Tautologia</h2>
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Definição</div>
+        <p>Uma proposição composta é uma <strong>tautologia</strong> quando a coluna de resultado
+           da sua tabela-verdade contém <strong>somente a letra V</strong> — ou seja, o valor
+           lógico é sempre verdadeiro, não importe quais sejam os valores das proposições simples
+           que a compõem.</p>
+      </div>
+
+      <h3>Exemplo</h3>
+      <p>A proposição <span class="formula">∼(p ∧ ∼p)</span> é uma tautologia. Esta expressão é, na
+           verdade, a versão simbólica do próprio <strong>princípio da não contradição</strong>:
+           "não é possível que uma proposição e sua negação sejam verdadeiras ao mesmo tempo".</p>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">∼p</th>
+            <th scope="col">p ∧ ∼p</th>
+            <th scope="col">∼(p ∧ ∼p)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>A coluna final só tem V — confirma que é uma tautologia.</p>
+    </section>
+
+    <!-- ====== SEÇÃO 4: CONTRADIÇÃO ====== -->
+    <section id="contradicao">
+      <h2>Contradição</h2>
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Definição</div>
+        <p>Uma proposição composta é uma <strong>contradição</strong> quando a coluna de resultado
+           da sua tabela-verdade contém <strong>somente a letra F</strong> — ou seja, o valor
+           lógico é sempre falso, não importe quais sejam os valores das proposições simples
+           que a compõem.</p>
+      </div>
+
+      <h3>Exemplo</h3>
+      <p>A proposição <span class="formula">(p → q) ∧ (q → r) ∧ p ∧ ∼r</span> é uma contradição. Faz sentido:
+           se <span class="formula">"p implica q" e "q implica r" são verdadeiras e p também é
+           verdadeira</span>, então r é obrigado a ser verdadeiro também (por transitividade) —
+           logo, exigir ao mesmo tempo que <span class="formula">∼r</span> seja verdadeira é uma
+           exigência impossível de satisfazer.</p>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">q</th>
+            <th scope="col">r</th>
+            <th scope="col">p → q</th>
+            <th scope="col">q → r</th>
+            <th scope="col">∼r</th>
+            <th scope="col"><strong>Resultado</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>A coluna final só tem F — confirma que é uma contradição.</p>
+    </section>
+
+    <!-- ====== SEÇÃO 5: CONTINGÊNCIA ====== -->
+    <section id="contingencia">
+      <h2>Contingência</h2>
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Definição</div>
+        <p>Uma proposição composta é uma <strong>contingência</strong> quando sua coluna de
+           resultado tem <strong>tanto V quanto F</strong> (cada um aparecendo pelo menos uma
+           vez) — isto é, não é tautologia nem contradição.</p>
+      </div>
+
+      <h3>Exemplo</h3>
+      <p>A proposição <span class="formula">p ∨ (q ∧ ∼r)</span> é uma contingência.</p>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">q</th>
+            <th scope="col">r</th>
+            <th scope="col">∼r</th>
+            <th scope="col">q ∧ ∼r</th>
+            <th scope="col"><strong>Resultado</strong></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>A coluna final tem V e F misturados — confirma que é uma contingência.</p>
+    </section>
+
+    <!-- ====== SEÇÃO: QUESTÃO CONCURSO ====== -->
+    <section id="concurso">
+      <h2>Aplicando na prática: questão estilo concurso</h2>
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Questão</div>
+        <p>Considere <span class="formula">m</span>: "está chovendo" e <span class="formula">n</span>: "vou levar guarda-chuva". Assinale a alternativa que representa uma <strong>tautologia</strong>:</p>
+      </div>
+
+      <div class="duas-colunas">
+        <div class="coluna coluna--sim">
+          <h3>Alternativas</h3>
+          <ul>
+            <li>(a) Se está chovendo, então não vou levar guarda-chuva.</li>
+            <li>(b) Está chovendo ou não está chovendo.</li>
+            <li>(c) Está chovendo e não está chovendo.</li>
+            <li>(d) Ou está chovendo, ou não vou levar guarda-chuva (não as duas coisas).</li>
+          </ul>
+        </div>
+        <div class="coluna coluna--nao">
+          <h3>Tradução</h3>
+          <ul>
+            <li>(a) <span class="formula">m → ∼n</span></li>
+            <li>(b) <span class="formula">m ∨ ∼m</span></li>
+            <li>(c) <span class="formula">m ∧ ∼m</span></li>
+            <li>(d) <span class="formula">m ⊻ ∼n</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p>A alternativa (c) já salta aos olhos como uma contradição. As alternativas (a) e (d) dependem dos valores de m e n — são contingências. Resta a alternativa (b): "m ou não-m" é o princípio do terceiro excluído, então é sempre verdadeira.</p>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">m</th>
+            <th scope="col">∼m</th>
+            <th scope="col">m ∨ ∼m</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Alternativa correta: (b).</strong></p>
+    </section>
+
+    <!-- ====== SEÇÃO: QUIZ ====== -->
+    <section id="quiz">
+      <h2>Quiz de fixação</h2>
+      <div class="quiz" data-quiz="aula2-tautologia" aria-label="Quiz de Tabelas-Verdade e Propriedades"></div>
+    </section>
+
+    <!-- ====== RESUMO ====== -->
+    <section id="resumo">
+      <h2>Resumo rápido</h2>
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">Classificação</th>
+            <th scope="col">Coluna de resultado</th>
+            <th scope="col">Como pensar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tautologia</strong></td>
+            <td>só V</td>
+            <td>sempre verdadeira, não importa os valores</td>
+          </tr>
+          <tr>
+            <td><strong>Contradição</strong></td>
+            <td>só F</td>
+            <td>sempre falsa, não importa os valores</td>
+          </tr>
+          <tr>
+            <td><strong>Contingência</strong></td>
+            <td>V e F misturados</td>
+            <td>o valor depende das proposições simples</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/script.js" defer></script>
+</body>
+</html>

@@ -16,13 +16,22 @@ conforme novas aulas forem produzidas:
 index.html         ← hub na raiz: lista as aulas e direciona para cada uma
 .nojekyll          ← desliga o Jekyll no GitHub Pages (site 100% estático)
 aulas/
-├── aula1/          ← primeira aula (conteúdo completo: proposições, conectivos,
+├── aula1/          ← Aula 1 — Fundamentos (conteúdo completo: proposições, conectivos,
 │   ├── index.html     linguagem simbólica e tabelas-verdade)
 │   └── assets/
 │       ├── estilo.css
 │       └── script.js
-├── aula2/          ← próximas aulas (a adicionar)
-└── aula3/          ← …
+├── aula2/          ← Aula 1 — Exercícios (30 questões + 5 tabelas-verdade)
+│   ├── index.html
+│   └── assets/
+│       ├── estilo.css
+│       └── script.js
+├── aula3/          ← Aula 2 — Tabelas-Verdade e Propriedades (teoria + propriedades)
+│   ├── index.html
+│   └── assets/
+│       ├── estilo.css
+│       └── script.js
+```
 
 O `index.html` da raiz é um **hub** que lista as aulas e direciona para cada uma
 (`aulas/aulaN/`). Para adicionar uma aula, basta criar a pasta em `aulas/` e incluir
@@ -45,7 +54,7 @@ um card correspondente nesse arquivo.
 
 Não é necessário servidor nem instalação — as páginas são arquivos HTML estáticos.
 
-## Conteúdo da Aula 1
+## Conteúdo da Aula 1 — Fundamentos
 
 A primeira aula cobre os fundamentos da lógica proposicional e a ponte entre a linguagem natural
 e a linguagem simbólica. Está dividida nos seguintes tópicos:
@@ -76,9 +85,61 @@ Ao final, há uma **Trilha** que mostra a mesma frase passando pelas três etapa
 natural ao conectivo, à fórmula e à tabela-verdade — para reforçar a conexão entre os tópicos.
 Cada tópico também traz um pequeno quiz de fixação.
 
+## Conteúdo da Aula 1 — Exercícios
+
+A segunda página reúne **35 exercícios práticos** organizados em 3 partes, servindo como
+complemento de fixação da Aula 1:
+
+1. **Parte 1 — Conceitos e Tradução (15 questões)** — múltipla escolha sobre proposições
+   simples/compostas e tradução entre linguagem natural e simbólica.
+
+2. **Parte 2 — Valoração Lógica (15 questões)** — questões V/F com valorações fixas:
+   - Questões 16–22: p=V, q=F, r=V
+   - Questões 23–30: p=F, q=F, r=V
+
+3. **Parte 3 — Construção de Tabelas-Verdade (5 exercícios abertos)** — tabelas completas
+   para expressões com 3 variáveis (p, q, r), padrão VVV, VVF, VFV, VFF, FVV, FVF, FFV, FFF:
+   - 31. `p → (q ∧ r)`
+   - 32. `(p ∨ q) ↔ ∼r`
+   - 33. `(p ∧ ∼q) → r`
+   - 34. `∼(p ⊻ q) ∨ r`
+   - 35. `(p → r) ∧ (q → r)`
+
+As Partes 1 e 2 usam o sistema de quiz interativo com feedback imediato e placar. A Parte 3
+apresenta as tabelas-verdade já montadas para conferência e estudo.
+
+## Conteúdo da Aula 2 — Tabelas-Verdade e Propriedades
+
+A terceira página é a **parte teórica complementar** sobre tabelas-verdade, aprofundando o
+tópico 5 da Aula 1 e introduzindo as propriedades das proposições compostas:
+
+1. **Recapitulando** — definição de tabela-verdade, teorema 2ⁿ com explicação intuitiva
+   (dobramento a cada nova proposição), tabela n vs 2ⁿ e fórmula do número de colunas
+   (n colunas para n proposições simples).
+
+2. **Construção de Tabelas** — exemplo completo passo a passo: `S(p,q,r) = (p ∧ q → ∼r) ∨ ∼q`
+   (8 linhas, 8 colunas), ordem de precedência dos conectivos e método de preenchimento.
+
+3. **Tautologia** — definição (coluna final só V), princípio da não contradição, exemplo
+   `∼(p ∧ ∼p)` com tabela completa.
+
+4. **Contradição** — definição (coluna final só F), exemplo `(p → q) ∧ (q → r) ∧ p ∧ ∼r`
+   (8 linhas, 7 colunas) com explicação da impossibilidade por transitividade.
+
+5. **Contingência** — definição (coluna final com V e F misturados), exemplo
+   `p ∨ (q ∧ ∼r)` com tabela completa (8 linhas, 6 colunas).
+
+6. **Questão estilo concurso** — aplicação prática com proposições m ("está chovendo") e
+   n ("vou levar guarda-chuva"), identificando a tautologia entre 4 alternativas.
+
+7. **Resumo rápido** — tabela comparativa das três classificações.
+
+A aula inclui **quiz de fixação com 9 questões** focadas exclusivamente nas propriedades:
+tautologia, contradição, contingência, invariância da classificação, 2ⁿ e construção.
+
 ## Próximas aulas
 
-Novas pastas `aula2/`, `aula3/`, … serão adicionadas aqui conforme o conteúdo avançar.
+Novas pastas `aula4/`, `aula5/`, … serão adicionadas aqui conforme o conteúdo avançar.
 
 ---
 
