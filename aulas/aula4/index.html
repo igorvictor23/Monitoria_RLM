@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 4 — Implicação, Equivalência e Leis de De Morgan · Monitoria de RLM</title>
+  <meta name="description" content="Aula sobre implicação lógica, equivalência lógica e leis de De Morgan: conceitos, regras de reescrita e exemplos resolvidos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+
+<div class="barra-progresso" id="barra-progresso" aria-hidden="true"></div>
+
+<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="../../index.html" class="sidebar__marca" aria-label="Voltar ao hub principal das aulas">📘 Monitoria de RLM</a>
+    <div class="sidebar__sub">Aula 4 — Implicação, Equivalência e Leis de De Morgan</div>
+    <nav aria-label="Navegação por partes da aula">
+      <ul class="sidebar__nav">
+        <li><a href="#inicio" aria-current="true">Início</a></li>
+        <li><a href="#implicacao">1. Implicação Lógica</a></li>
+        <li><a href="#equivalencia">2. Equivalência Lógica</a></li>
+        <li><a href="#condicional">3. Equivalência da Condicional</a></li>
+        <li><a href="#disjuncao">4. Equivalência da Disjunção</a></li>
+        <li><a href="#dupla-negacao">5. Dupla Negação</a></li>
+        <li><a href="#contrapositiva">6. Contrapositiva</a></li>
+        <li><a href="#reciproca">7. Recíproca (não é equivalente)</a></li>
+        <li><a href="#leis-de-morgan">8. Leis de De Morgan</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============ CONTEÚDO ============ -->
+  <main class="conteudo">
+
+    <!-- ====== SEÇÃO INÍCIO ====== -->
+    <section id="inicio">
+      <div class="hero">
+        <h1>Aula 4 — Implicação, Equivalência e Leis de De Morgan</h1>
+        <p class="hero__sub">Raciocínio Lógico e Matemático</p>
+        <p>Esta aula trata do <strong>relacionamento profundo entre duas proposições</strong>: quando elas
+           implicam ou são equivalentes logicalmente. Usaremos tabelas-verdade para confirmar
+           implicações, verificar equivalências e aplicar as Leis de De Morgan — fundamentais
+           para provas e exercícios de concurso.</p>
+        <p>Use o menu ao lado para navegar entre os tópicos ou acompanhe a sequência.</p>
+
+        <div class="cards-indice">
+          <a class="card-indice" href="#implicacao">
+            <span class="card-indice__num">1</span>
+            <div class="card-indice__titulo">Implicação Lógica</div>
+            <p class="card-indice__resumo">Definição, distinção com condicional e exemplo resolvido.</p>
+          </a>
+          <a class="card-indice" href="#equivalencia">
+            <span class="card-indice__num">2</span>
+            <div class="card-indice__titulo">Equivalência Lógica</div>
+            <p class="card-indice__resumo">Definição, teorema de verificação e regras de reescrita.</p>
+          </a>
+          <a class="card-indice" href="#condicional">
+            <span class="card-indice__num">3</span>
+            <div class="card-indice__titulo">Equivalência da Condicional</div>
+            <p class="card-indice__resumo">p → q ⇔ ∼p ∨ q e exemplo com questão.</p>
+          </a>
+          <a class="card-indice" href="#disjuncao">
+            <span class="card-indice__num">4</span>
+            <div class="card-indice__titulo">Equivalência da Disjunção</div>
+            <p class="card-indice__resumo">p ∨ q ⇔ ∼p → q e exemplo com questão.</p>
+          </a>
+          <a class="card-indice" href="#dupla-negacao">
+            <span class="card-indice__num">5</span>
+            <div class="card-indice__titulo">Dupla Negação</div>
+            <p class="card-indice__resumo">∼∼p ⇔ p e exemplo com o carro vermelho.</p>
+          </a>
+          <a class="card-indice" href="#contrapositiva">
+            <span class="card-indice__num">6</span>
+            <div class="card-indice__titulo">Contrapositiva</div>
+            <p class="card-indice__resumo">p → q ⇔ ∼q → ∼p e exemplo com questão.</p>
+          </a>
+          <a class="card-indice" href="#reciproca">
+            <span class="card-indice__num">7</span>
+            <div class="card-indice__titulo">Recíproca</div>
+            <p class="card-indice__resumo">Por que q → p NÃO é equivalente à original.</p>
+          </a>
+          <a class="card-indice" href="#leis-de-morgan">
+            <span class="card-indice__num">8</span>
+            <div class="card-indice__titulo">Leis de De Morgan</div>
+            <p class="card-indice__resumo">1ª e 2ª leis com tabelas-verdade e exemplos.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SEÇÃO 1: IMPLICAÇÃO LÓGICA ====== -->
+    <section id="implicacao">
+      <h2>1. Implicação Lógica</h2>
+
+      <h3>Por que isso importa</h3>
+      <p>Esse conceito aparece bastante fora da matemática pura também — Direito, Medicina,
+         Engenharia e concursos em geral usam raciocínios do tipo "se isso é verdade, aquilo também
+         é". É exatamente isso que a implicação lógica formaliza.</p>
+
+      <h3>Definição</h3>
+      <p>Dizemos que uma proposição <strong>P(p₁, p₂, ..., pₙ) implica logicamente</strong> uma proposição
+         <strong>Q(q₁, q₂, ..., qₘ)</strong> quando Q é verdadeira <strong>toda vez que</strong> P é verdadeira. Em outras
+         palavras: olhando as tabelas-verdade de P e Q lado a lado, nunca aparece uma linha em que P
+         seja V e Q seja F.</p>
+
+      <p><strong>Notação:</strong> <span class="formula">P(p₁, ..., pₙ) ⇒ Q(q₁, ..., qₘ)</span></p>
+
+      <h3>Implicação (⇒) não é o mesmo que condicional (→)</h3>
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Distinção importante</div>
+        <p>- A <strong>condicional (→)</strong> é uma <strong>operação lógica</strong> entre P e Q. Ela gera uma nova proposição
+           P → Q, cujo valor (V ou F) você calcula linha por linha na tabela-verdade.
+        </p>
+        <p>- A <strong>implicação (⇒)</strong> não é uma operação — é uma <strong>observação</strong> sobre duas tabelas-verdade já prontas: ela afirma que a combinação "P = V e Q = F" simplesmente nunca acontece.</p>
+      </div>
+
+      <h3>Teorema: como confirmar uma implicação</h3>
+      <p>> P(p₁, ..., pₙ) implica Q(q₁, ..., qₘ) <b>se, e somente se</b>, a condicional <b>P → Q é uma tautologia</b> <b>(só dá V em toda a tabela)</b>.</p>
+
+      <p>Isso dá um atalho prático: em vez de comparar duas tabelas linha por linha, basta montar a
+         tabela-verdade de P → Q e verificar se ela é tautológica.</p>
+
+      <h3>Exemplo resolvido</h3>
+      <p>Vamos verificar se <span class="formula">P(p, q, r) = p ∧ q ∧ r</span> implica logicamente <span class="formula">Q(p, q, r) = p ∨ q ∨ r</span>.</p>
+
+      <p>Intuitivamente isso já parece razoável: se as três proposições simples são todas verdadeiras
+         (conjunção), com certeza pelo menos uma delas é verdadeira (disjunção). Vamos confirmar com a
+         tabela:</p>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">q</th>
+            <th scope="col">r</th>
+            <th scope="col">P = p ∧ q ∧ r</th>
+            <th scope="col">Q = p ∨ q ∨ r</th>
+            <th scope="col">P → Q</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>Coluna final só tem V — confirma: P implica Q (P ⇒ Q).</strong></p>
+    </section>
+
+    <!-- ====== SEÇÃO 2: EQUIVALENCIA LOGICA ====== -->
+    <section id="equivalencia">
+      <h2>2. Equivalência Lógica</h2>
+
+      <h3>Definição</h3>
+      <p>Dizemos que uma proposição <strong>P(p₁, ..., pₙ) é logicamente equivalente</strong> (ou apenas
+         <strong>equivalente</strong>) a uma proposição <strong>Q(q₁, ..., qₘ)</strong> quando os resultados de suas
+         tabelas-verdade são <strong>idênticos</strong>, linha por linha.</p>
+
+      <p><strong>Notação:</strong> P(p₁, ..., pₙ) ⇔ Q(q₁, ..., qₘ)</p>
+
+      <p>Repare que a equivalência lógica é justamente a implicação lógica valendo <strong>nas duas
+         direções ao mesmo tempo</strong> (P ⇒ Q e também Q ⇒ P).</p>
+
+      <h3>Teorema: como confirmar uma equivalência</h3>
+      <p>> P(p₁, ..., pₙ) é equivalente a Q(q₁, ..., qₘ) <b>se, e somente se</b>, a bicondicional <b>P ↔ Q é uma tautologia</b>.</p>
+
+      <p>Assim como na implicação, isso dá um atalho: monte a tabela-verdade de P ↔ Q e veja se ela
+         só dá V. As equivalências a seguir são especialmente úteis porque cada uma delas é, na
+         prática, uma <strong>regra de reescrita</strong>: uma receita de 3 passos para trocar um conectivo
+         por outro sem mudar o valor lógico da proposição — muito útil em questões de "sentença equivalente"
+         em provas.</p>
+    </section>
+
+    <!-- ====== SEÇÃO 3: EQUIVALENCIA DA CONDICIONAL ====== -->
+    <section id="condicional">
+      <h2>3. Equivalência da Condicional</h2>
+
+      <p><span class="formula">p → q ⇔ ∼p ∨ q</span></p>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Regra (3 passos):</div>
+        <ol>
+          <b>
+          <li>Nega-se o primeiro termo.</li>
+          <li>Mantém-se o segundo termo.</li>
+          <li>Troca-se o símbolo → pelo símbolo ∨.</li>
+          </b>
+        </ol>
+      </div>
+
+      <h3>Exemplo</h3>
+      <p>Considere p: "Marcelo economiza." e q: "Marcelo viaja nas férias."</p>
+
+      <p>> "Se Marcelo economiza, então ele viaja nas férias." (p → q)</p>
+
+      <p>Aplicando a regra: nega o 1º termo → "Marcelo não economiza"; mantém o 2º → "ele viaja nas
+         férias"; troca "se..., então..." por "ou":</p>
+
+      <p>> "Marcelo não economiza ou ele viaja nas férias." (∼p ∨ q)</p>
+    </section>
+
+    <!-- ====== SEÇÃO 4: EQUIVALENCIA DA DISJUNCAO ====== -->
+    <section id="disjuncao">
+      <h2>4. Equivalência da Disjunção</h2>
+
+      <p><span class="formula">p ∨ q ⇔ ∼p → q</span></p>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Regra (3 passos):</div>
+        <ol>
+          <b>
+          <li>Nega-se o primeiro termo.</li>
+          <li>Mantém-se o segundo termo.</li>
+          <li>Troca-se o símbolo ∨ pelo símbolo →.</li>
+          </b>
+        </ol>
+      </div>
+
+      <h3>Exemplo</h3>
+      <p>Considere p: "Beatriz é professora." e q: "Beatriz é escritora."</p>
+
+      <p>> "Beatriz é professora ou é escritora." (p ∨ q)</p>
+
+      <p>Aplicando a regra: nega o 1º termo → "Beatriz não é professora"; mantém o 2º → "é
+         escritora"; troca "ou" por "se..., então...":</p>
+
+      <p>> "Se Beatriz não é professora, então é escritora." (∼p → q)</p>
+    </section>
+
+    <!-- ====== SEÇÃO 5: DUPLA NEGACAO ====== -->
+    <section id="dupla-negacao">
+      <h2>5. Dupla Negação</h2>
+
+      <p><strong>∼(∼p) ⇔ p</strong></p>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Regra (3 passos):</div>
+        <ol>
+          <b>
+          <li>Identifica-se duas negações seguidas: <span class="formula">∼∼p</span>.</li>
+          <li>Elimina-se a primeira negação, mantendo apenas o segundo <span class="formula">∼</span>.</li>
+          <li>Resultado: <span class="formula">p</span>.</li>
+          </b>
+        </ol>
+      </div>
+
+      <h3>Exemplo</h3>
+      <p>Considere p: "O carro é vermelho."</p>
+
+      <p>> "O carro não é não vermelho." (<span class="formula">∼∼p</span>)</p>
+
+      <p>Aplicando a regra: duas negações em sequência se anulam. Resultado: "O carro é vermelho." (<span class="formula">p</span>)</p>
+    </section>
+
+    <!-- ====== SEÇÃO 6: CONTRAPOSITIVA ====== -->
+    <section id="contrapositiva">
+      <h2>6. Contrapositiva</h2>
+
+      <p><strong>p → q ⇔ ∼q → ∼p</strong></p>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Regra (3 passos):</div>
+        <ol>
+          <b>
+          <li>Inverte a ordem: de q para p.</li>
+          <li>Inverte o conectivo: de → para ← (ou ↔).</li>
+          <li>Inverte tudo: tanto p quanto q ficam negados.</li>
+          </b>
+        </ol>
+      </div>
+
+      <h3>Exemplo</h3>
+      <p>Considere p: "Estou em casa." e q: "Estou de humor."</p>
+
+      <p>> "Se estou em casa, então estou de humor." (<span class="formula">p → q</span>)</p>
+
+      <p>Aplicando a regra de contraposição:</p>
+
+      <p>> "Se não estou de humor, então não estou em casa." (<span class="formula">∼q → ∼p</span>)</p>
+    </section>
+
+    <!-- ====== SEÇÃO 7: RECIPROCA (NÃO É EQUIVALENTE) ====== -->
+    <section id="reciproca">
+      <h2>7. Recíproca (cuidado: NÃO é equivalente)</h2>
+
+<div class="callout callout--atencao">
+  <div class="callout__titulo">🛑 Alerta importante</div>
+  <p>A <strong>recíproca</strong> de <span class="formula">p → q</span> é <span class="formula">q → p</span>. <strong>Ela NÃO é logicamente equivalente</strong> à original. Um exemplo clássico:</p>
+  <p><strong>Original:</strong> "Se chove, o chão fica molhado." (<span class="formula">p → q</span>)</p>
+  <p><strong>Recíproca:</strong> "Se o chão fica molhado, então choveu." (<span class="formula">q → p</span>)</p>
+  <p>A recíproca pode ser falsa enquanto a original é verdadeira — o chão pode ficar
+     molhado por outras razões (arboragem, torneira, etc.).</p>
+</div>
+    </section>
+
+    <!-- ====== SEÇÃO 8: LEIS DE MORGAN ====== -->
+    <section id="leis-de-morgan">
+      <h2>8. Leis de De Morgan</h2>
+
+      <h3>Contexto</h3>
+      <p>Já vimos como negar uma proposição simples (basta usar ∼). Essas duas leis mostram
+         como negar uma proposição <strong>composta</strong> formada por conjunção ou por disjunção —
+         um dos tipos de pergunta mais comuns em provas de raciocínio lógico.</p>
+
+      <h3>1ª Lei de De Morgan — Negação da conjunção</h3>
+
+      <p><span class="formula">∼(p ∧ q) ⇔ ∼p ∨ ∼q</span></p>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Regra (3 passos):</div>
+        <ol>
+          <b>
+          <li>Nega-se o primeiro termo.</li>
+          <li>Nega-se o segundo termo.</li>
+          <li>Troca-se o símbolo ∧ pelo símbolo ∨.</li>
+          </b>
+        </ol>
+      </div>
+
+      <p>Em outras palavras: <strong>a negação de "e" vira "ou"</strong>, com os dois termos negados.</p>
+
+      <h4>Verificação por tabela-verdade:</h4>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">q</th>
+            <th scope="col">∼p</th>
+            <th scope="col">∼q</th>
+            <th scope="col">p ∧ q</th>
+            <th scope="col">∼(p ∧ q)</th>
+            <th scope="col">∼p ∨ ∼q</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>As colunas <span class="formula">∼(p ∧ q)</span> e <span class="formula">∼p ∨ ∼q</span> são idênticas — confirma a equivalência.</p>
+
+      <h4>Exemplo</h4>
+      <p>Considere p: "Felipe é dentista." e q: "Felipe mora em Recife."</p>
+
+      <p>> "Não é verdade que Felipe é dentista e mora em Recife." — (<span class="formula">∼(p ∧ q)</span>)</p>
+
+      <p>Aplicando a regra: nega o 1º termo → "Felipe não é dentista"; nega o 2º → "Felipe não mora
+         em Recife"; troca "e" por "ou":</p>
+
+      <p>> "Felipe não é dentista ou não mora em Recife." (<span class="formula">∼p ∨ ∼q</span>)</p>
+
+      <h3>2ª Lei de De Morgan — Negação da disjunção</h3>
+
+      <p><span class="formula">∼(p ∨ q) ⇔ ∼p ∧ ∼q</span></p>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Regra (3 passos):</div>
+        <ol>
+          <b>
+          <li>Nega-se o primeiro termo.</li>
+          <li>Nega-se o segundo termo.</li>
+          <li>Troca-se o símbolo ∨ pelo símbolo ∧.</li>
+          </b>
+        </ol>
+      </div>
+
+      <p>Em outras palavras: <strong>a negação de "ou" vira "e"</strong>, com os dois termos negados.</p>
+
+      <h4>Verificação por tabela-verdade:</h4>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">q</th>
+            <th scope="col">∼p</th>
+            <th scope="col">∼q</th>
+            <th scope="col">p ∨ q</th>
+            <th scope="col">∼(p ∨ q)</th>
+            <th scope="col">∼p ∧ ∼q</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>As colunas <span class="formula">∼(p ∨ q)</span> e <span class="formula">∼p ∧ ∼q</span> são idênticas — confirma a equivalência.</p>
+
+      <h4>Exemplo</h4>
+      <p>Considere p: "Camila estuda francês." e q: "Camila toca piano."</p>
+
+      <p>> "Não é verdade que Camila estuda francês ou toca piano." — (<span class="formula">∼(p ∨ q)</span>)</p>
+
+      <p>Aplicando a regra: nega o 1º termo → "Camila não estuda francês"; nega o 2º → "Camila não
+         toca piano"; troca "ou" por "e":</p>
+
+      <p>> "Camila não estuda francês e não toca piano." (<span class="formula">∼p ∧ ∼q</span>)</p>
+    </section>
+
+    <!-- ====== SEÇÃO: QUIZ ====== -->
+    <section id="quiz">
+      <h2>Quiz de fixação</h2>
+      <div class="quiz" data-quiz="aula4-implicacao" aria-label="Quiz de Implicação, Equivalência e Leis de De Morgan"></div>
+    </section>
+
+    <!-- ====== RESUMO ====== -->
+    <section id="resumo">
+      <h2>Resumo rápido</h2>
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">Conceito</th>
+            <th scope="col">Fórmula / Símbolo</th>
+            <th scope="col">Aplicação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Implicação lógica</strong></td>
+            <td><span class="formula">P ⇒ Q</span></td>
+            <td>Verificar se P → Q é tautologia</td>
+          </tr>
+          <tr>
+            <td><strong>Equivalência lógica</strong></td>
+            <td><span class="formula">P ⇔ Q</span></td>
+            <td>Verificar se P ↔ Q é tautologia</td>
+          </tr>
+          <tr>
+            <td><strong>Equivalência da condicional</strong></td>
+            <td><span class="formula">p → q ⇔ ∼p ∨ q</span></td>
+            <td>Reescrever implicações</td>
+          </tr>
+          <tr>
+            <td><strong>Equivalência da disjunção</strong></td>
+            <td><span class="formula">p ∨ q ⇔ ∼p → q</span></td>
+            <td>Reescrever disjunções</td>
+          </tr>
+          <tr>
+            <td><strong>Dupla negação</strong></td>
+            <td><span class="formula">∼∼p ⇔ p</span></td>
+            <td>Simplificar negações</td>
+          </tr>
+          <tr>
+            <td><strong>Contrapositiva</strong></td>
+            <td><span class="formula">p → q ⇔ ∼q → ∼p</span></td>
+            <td>Reformular implicações</td>
+          </tr>
+          <tr>
+            <td><strong>1ª Lei de De Morgan</strong></td>
+            <td><span class="formula">∼(p ∧ q) ⇔ ∼p ∨ ∼q</span></td>
+            <td>Negar conjunções</td>
+          </tr>
+          <tr>
+            <td><strong>2ª Lei de De Morgan</strong></td>
+            <td><span class="formula">∼(p ∨ q) ⇔ ∼p ∧ ∼q</span></td>
+            <td>Negar disjunções</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/script.js" defer></script>
+</body>
+</html>

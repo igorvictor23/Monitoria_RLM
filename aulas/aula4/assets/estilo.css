@@ -194,8 +194,6 @@ section { margin-bottom: 64px; scroll-margin-top: 16px; }
   transition: transform .15s ease, border-color .15s ease;
 }
 .card-indice:hover { transform: translateY(-3px); border-top-color: var(--verde-forte); text-decoration: none; }
-.card-indice[aria-disabled="true"] { opacity: .65; cursor: not-allowed; background: var(--cinza-fundo); border-top-color: var(--borda); }
-.card-indice[aria-disabled="true"]:hover { transform: none; border-top-color: var(--borda); background: var(--cinza-fundo); }
 .card-indice__num {
   display: inline-flex;
   align-items: center;
