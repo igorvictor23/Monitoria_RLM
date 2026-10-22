@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 5 — Regras de Equivalência Lógica · Monitoria de RLM</title>
+  <meta name="description" content="Aula sobre princípios fundamentais, leis de De Morgan, equivalências da condicional e bicondicional, leis algébricas e absorção.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+
+<div class="barra-progresso" id="barra-progresso" aria-hidden="true"></div>
+
+<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="../../index.html" class="sidebar__marca" aria-label="Voltar ao hub principal das aulas">📘 Monitoria de RLM</a>
+    <div class="sidebar__sub">Aula 5 — Regras de Equivalência</div>
+    <nav aria-label="Navegação por partes da aula">
+      <ul class="sidebar__nav">
+        <li><a href="#inicio" aria-current="true">Início</a></li>
+        <li><a href="#inicios">1. Princípios Fundamentais</a></li>
+        <li><a href="#dupla-negacao">2. Lei da Dupla Negação</a></li>
+        <li><a href="#de-morgan">3. Leis de De Morgan</a></li>
+        <li><a href="#condicionais">4. Equivalências da Condicional</a></li>
+        <li><a href="#bicondicionais">5. Equivalências da Bicondicional</a></li>
+        <li><a href="#algebardicas">6. Leis Algébricas</a></li>
+        <li><a href="#absorcao">7. Leis de Absorção</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============ CONTEÚDO ============ -->
+  <main class="conteudo">
+
+    <!-- ====== SEÇÃO INÍCIO ====== -->
+    <section id="inicio">
+      <div class="hero">
+        <h1>Aula 5 — Regras de Equivalência Lógica</h1>
+        <p class="hero__sub">Princípios Fundamentais e Leis de Transformação</p>
+        <p>Esta aula apresenta as principais regras de equivalência lógica, leis fundamentais do cálculo proposicional e propriedades algébricas essenciais para manipulação de expressões lógicas. Ideal para preparação para provas e exercícios de raciocínio.</p>
+        <p>Use o menu ao lado para navegar entre os tópicos ou acompanhe a sequência.</p>
+
+        <div class="cards-indice">
+          <a class="card-indice" href="#inicios">
+            <span class="card-indice__num">1</span>
+            <div class="card-indice__titulo">Princípios Fundamentais</div>
+            <p class="card-indice__resumo">Terceiro Excluído, Não Contradição, Identidade.</p>
+          </a>
+          <a class="card-indice" href="#dupla-negacao">
+            <span class="card-indice__num">2</span>
+            <div class="card-indice__titulo">Dupla Negação</div>
+            <p class="card-indice__resumo">∼(∼p) ⇔ p, anulação de negações.</p>
+          </a>
+          <a class="card-indice" href="#de-morgan">
+            <span class="card-indice__num">3</span>
+            <div class="card-indice__titulo">Leis de De Morgan</div>
+            <p class="card-indice__resumo">Transformação de negações de conjunções/disjunções.</p>
+          </a>
+          <a class="card-indice" href="#condicionais">
+            <span class="card-indice__num">4</span>
+            <div class="card-indice__titulo">Condicionais</div>
+            <p class="card-indice__resumo">Implicação, contraposição, negação da condicional.</p>
+          </a>
+          <a class="card-indice" href="#bicondicionais">
+            <span class="card-indice__num">5</span>
+            <div class="card-indice__titulo">Bicondicionais</div>
+            <p class="card-indice__resumo">Equivalentes, expandida e negação.</p>
+          </a>
+          <a class="card-indice" href="#algebardicas">
+            <span class="card-indice__num">6</span>
+            <div class="card-indice__titulo">Leis Algébricas</div>
+            <p class="card-indice__resumo">Comutatividade, Associatividade, Distributividade.</p>
+          </a>
+          <a class="card-indice" href="#absorcao">
+            <span class="card-indice__num">7</span>
+            <div class="card-indice__titulo">Absorção</div>
+            <p class="card-indice__resumo">Simplificação por repetição de operandos.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SEÇÃO 1: PRINCÍPIOS FUNDAMENTAIS ====== -->
+    <section id="inicios">
+      <h2>1. Princípios Fundamentais da Lógica</h2>
+
+      <h3>1.1 Lei do Terceiro Excluído (Princípio do Terceiro Excluído)</h3>
+      <p>Toda proposição <span class="formula">p</span> é ou verdadeira ou é falsa, não existindo uma terceira possibilidade.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Exemplo</div>
+        <div class="exemplo__conteudo">
+          <p>"O Brasil é o país do futebol" ou "O Brasil não é o país do futebol" — uma dessas duas sentenças sempre é verdadeira.</p>
+          <p><strong>Fórmula:</strong> <span class="formula">p ∨ ∼p ⇔ V</span> (Tautologia)</p>
+        </div>
+      </div>
+
+      <h3>1.2 Lei da Não Contradição (Princípio da Não Contradição)</h3>
+      <p>Uma proposição <span class="formula">p</span> não pode ser verdadeira e falsa ao mesmo tempo.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Exemplo</div>
+        <div class="exemplo__conteudo">
+          <p>É falso que "chove e não chove". A conjunção de uma proposição com sua negação é sempre falsa.</p>
+          <p><strong>Fórmula:</strong> <span class="formula">p ∧ ∼p ⇔ F</span> (Contradição)</p>
+        </div>
+      </div>
+
+      <h3>1.3 Princípio da Identidade</h3>
+      <p>Uma proposição declarada verdadeira é sempre verdadeira; uma proposição falsa é sempre falsa.</p>
+      
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">💡 Insight</div>
+        <p>O Princípio da Identidade é a base para a simplificação de expressões: <span class="formula">p</span> ou <span class="formula">¬p</span>, por si só, já possuem valor lógico definido.</p>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 2: DUPLA NEGAÇÃO ====== -->
+    <section id="dupla-negacao">
+      <h2>2. Lei da Dupla Negação</h2>
+
+      <p>Negar uma proposição duas vezes consecutivas <strong>anula</strong> a negação, retornando à proposição original.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Exemplo Prático</div>
+        <div class="exemplo__conteudo">
+          <p>"Não é verdade que a bola não é esférica" equivale a dizer "A bola é esférica".</p>
+          <p><strong>Fórmula:</strong> <span class="formula">∼(∼p) ⇔ p</span></p>
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Exemplo com Expressão Complexa</div>
+        <div class="exemplo__conteudo">
+          <p>Se temos: "Não é verdade que (não está chovendo)"</p>
+          <p>Aplicando dupla negação: "Está chovendo"</p>
+          <p><span class="formula">∼(∼q) ⇔ q</span></p>
+        </div>
+      </div>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Cuidado!</div>
+        <p>A dupla negação só se aplica a uma única proposição. Em expressões compostas, veja: <span class="formula">∼(p ∧ q) ≠ (∼p ∧ ∼q)</span></p>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 3: LEIS DE DE MORGAN ====== -->
+    <section id="de-morgan">
+      <h2>3. Leis de De Morgan</h2>
+
+      <h3>3.1 1ª Lei de De Morgan — Negação da Conjunção</h3>
+      <p>A negação de uma conjunção <span class="formula">(p ∧ q)</span> transforma-se na disjunção das negações.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Modelo de aplicação (3 passos)</div>
+        <div class="exemplo__conteudo">
+          <ol>
+            <li>Negar o primeiro termo: <span class="formula">∼p</span></li>
+            <li>Negar o segundo termo: <span class="formula">∼q</span></li>
+            <li>Trocar o símbolo "e" (<span class="formula">∧</span>) por "ou" (<span class="formula">∨</span>)</li>
+          </ol>
+          <p><strong>Fórmula:</strong> <span class="formula">∼(p ∧ q) ⇔ ∼p ∨ ∼q</span></p>
+        </div>
+      </div>
+
+      <h3>3.2 2ª Lei de De Morgan — Negação da Disjunção</h3>
+      <p>A negação de uma disjunção <span class="formula">(p ∨ q)</span> transforma-se na conjunção das negações.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Modelo de aplicação (3 passos)</div>
+        <div class="exemplo__conteudo">
+          <ol>
+            <li>Negar o primeiro termo: <span class="formula">∼p</span></li>
+            <li>Negar o segundo termo: <span class="formula">∼q</span></li>
+            <li>Trocar o símbolo "ou" (<span class="formula">∨</span>) por "e" (<span class="formula">∧</span>)</li>
+          </ol>
+          <p><strong>Fórmula:</strong> <span class="formula">∼(p ∨ q) ⇔ ∼p ∧ ∼q</span></p>
+        </div>
+      </div>
+
+      <h3>Exemplo Resolvido — 1ª Lei de De Morgan</h3>
+      <p>Considere a frase: "Não é verdade que o carro é vermelho e está na garagem."</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Aplicação</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Passo 1:</strong> Identificar p e q<br>
+             p = "O carro é vermelho"<br>
+             q = "O carro está na garagem"</p>
+          <p><strong>Passo 2:</strong> Aplicar a fórmula<br>
+             <span class="formula">∼(p ∧ q) ⇔ ∼p ∨ ∼q</span></p>
+          <p><strong>Resultado:</strong> "O carro não é vermelho ou não está na garagem."</p>
+        </div>
+      </div>
+
+      <h4>Verificação por Tabela-Verdade:</h4>
+      
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">p</th>
+            <th scope="col">q</th>
+            <th scope="col">p ∧ q</th>
+            <th scope="col">∼(p ∧ q)</th>
+            <th scope="col">∼p</th>
+            <th scope="col">∼q</th>
+            <th scope="col">∼p ∨ ∼q</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--f">F</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+            <td><span class="badge badge--v">V</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>As colunas <span class="formula">∼(p ∧ q)</span> e <span class="formula">∼p ∨ ∼q</span> são idênticas — confirma a equivalência.</p>
+
+    </section>
+
+    <!-- ====== SEÇÃO 4: EQUIVALENCIAS DA CONDITIONAL ====== -->
+    <section id="condicionais">
+      <h2>4. Equivalências da Condicional</h2>
+
+      <h3>4.1 Equivalência da Implicação</h3>
+      <p>Uma condicional <span class="formula">p → q</span> pode ser reescrita usando o conectivo "ou".</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Fórmula:</strong> <span class="formula">p → q ⇔ ∼p ∨ q</span></p>
+          <p><strong>Modelo de aplicação (3 passos):</strong></p>
+          <ol>
+            <li>Negar o primeiro termo: <span class="formula">∼p</span></li>
+            <li>Mantener o segundo termo: <span class="formula">q</span></li>
+            <li>Trocar o símbolo "Se..., então..." (<span class="formula">→</span>) por "ou" (<span class="formula">∨</span>)</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>4.2 Lei da Contraposição (Contrapositiva)</h3>
+      <p>Uma condicional é equivalente a inverter os termos e negar ambos.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Fórmula:</strong> <span class="formula">p → q ⇔ ∼q → ∼p</span></p>
+          <p><strong>Modelo de aplicação (3 passos):</strong></p>
+          <ol>
+            <li>Negar ambos os termos: <span class="formula">∼p</span> e <span class="formula">∼q</span></li>
+            <li>Mantener o símbolo "Se..., então..." (<span class="formula">→</span>)</li>
+            <li>Trocar as posições dos termos</li>
+          </ol>
+          <p><strong>Exemplo:</strong> "Se chove, o chão molha" ⇔ "Se o chão não molha, então não chove"</p>
+        </div>
+      </div>
+
+      <h3>4.3 Negação da Implicação</h3>
+      <p>Atenção: A negação de uma condicional <strong>não</strong> é outra condicional.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Fórmula:</strong> <span class="formula">∼(p → q) ⇔ p ∧ ∼q</span></p>
+          <p><strong>Modelo de aplicação (3 passos):</strong></p>
+          <ol>
+            <li>Mantener o primeiro termo: <span class="formula">p</span></li>
+            <li>Negar o segundo termo: <span class="formula">∼q</span></li>
+            <li>Trocar o símbolo "Se..., então..." (<span class="formula">→</span>) por "e" (<span class="formula">∧</span>)</li>
+          </ol>
+          <p><strong>Exemplo:</strong> "Não é verdade que se estudo, passo na disciplina" = "Estudo e não passo na disciplina"</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 5: EQUIVALENCIAS DA BICONDICIONAL ====== -->
+    <section id="bicondicionais">
+      <h2>5. Equivalências da Bicondicional</h2>
+
+      <h3>5.1 Bicondicional Básica (Dupla Implicação)</h3>
+      <p>A bicondicional significa que a condição de suficiência e necessidade ocorre nos dois sentidos.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Fórmula:</strong> <span class="formula">p ↔ q ⇔ (p → q) ∧ (q → p)</span></p>
+          <p><strong>Significado:</strong> "p se, e somente se, q" = "se p então q, E se q então p"</p>
+          <p><strong>Modelo de aplicação (3 passos):</strong></p>
+          <ol>
+            <li>Mantener as posições e trocar <span class="formula">↔</span> por <span class="formula">→</span></li>
+            <li>Trocar as posições e trocar <span class="formula">↔</span> por <span class="formula">→</span></li>
+            <li>Conectar com "e" (<span class="formula">∧</span>)</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>5.2 Bicondicional Expandido</h3>
+      <p>A bicondicional é verdadeira quando ambos os termos têm o mesmo valor lógico.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Fórmula:</strong> <span class="formula">p ↔ q ⇔ (p ∧ q) ∨ (∼p ∧ ∼q)</span></p>
+          <p><strong>Significado:</strong> Ou os dois acontecem juntos, ou nenhum dos dois acontece.</p>
+          <p><strong>Exemplo:</strong> "João passou na disciplina se e somente se Maria passou" = "João passou e Maria passou, OU João não passou e Maria não passou"</p>
+        </div>
+      </div>
+
+      <h3>5.3 Negação da Bicondicional</h3>
+      <p>A negação da bicondicional é a disjunção exclusiva.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra Básica</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Fórmula:</strong> <span class="formula">∼(p ↔ q) ⇔ (p ∧ ∼q) ∨ (∼p ∧ q)</span></p>
+          <p><strong>Modelo de aplicação (3 passos):</strong></p>
+          <ol>
+            <li>Mantener o primeiro termo e negar o segundo: <span class="formula">(p ∧ ∼q)</span></li>
+            <li>Negar o primeiro termo e manter o segundo: <span class="formula">(∼p ∧ q)</span></li>
+            <li>Conectar com "ou" (<span class="formula">∨</span>)</li>
+          </ol>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 6: LEIS ALGEBRICAS ====== -->
+    <section id="algebardicas">
+      <h2>6. Leis Algébricas</h2>
+
+      <h3>6.1 Comutatividade</h3>
+      <p>A ordem das proposições não altera o valor lógico da operação.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Conjunção ("E"):</strong> <span class="formula">p ∧ q ⇔ q ∧ p</span></p>
+          <p><strong>Disjunção ("Ou"):</strong> <span class="formula">p ∨ q ⇔ q ∨ p</span></p>
+          <p><strong>Bicondicional:</strong> <span class="formula">p ↔ q ⇔ q ↔ p</span></p>
+        </div>
+      </div>
+
+      <h3>6.2 Associatividade</h3>
+      <p>Quando operamos três proposições com o mesmo conectivo, a ordem de agrupamento não importa.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Conjunção:</strong> <span class="formula">(p ∧ q) ∧ r ⇔ p ∧ (q ∧ r)</span></p>
+          <p><strong>Disjunção:</strong> <span class="formula">(p ∨ q) ∨ r ⇔ p ∨ (q ∨ r)</span></p>
+        </div>
+      </div>
+
+      <h3>6.3 Distributividade</h3>
+      <p>Permite distribuir conjunções sobre disjunções e vice-versa.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Distributiva do "E" em relação ao "Ou":</strong></p>
+          <p><span class="formula">p ∧ (q ∨ r) ⇔ (p ∧ q) ∨ (p ∧ r)</span></p>
+          <p><strong>Distributiva do "Ou" em relação ao "E":</strong></p>
+          <p><span class="formula">p ∨ (q ∧ r) ⇔ (p ∨ q) ∧ (p ∨ r)</span></p>
+        </div>
+      </div>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">💡 Dica</div>
+        <p>As leis distributivas funcionam como a multiplicação sobre a adição na matemática básica, mas também têm a forma "invertida".</p>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 7: LEIS DE ABSORCAO ====== -->
+    <section id="absorcao">
+      <h2>7. Leis de Absorção</h2>
+
+      <p>As leis de absorção simplificam expressões onde uma mesma proposição se repete fora e dentro de parênteses.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Absorção 1:</strong> <span class="formula">p ∨ (p ∧ q) ⇔ p</span></p>
+          <p><strong>Absorção 2:</strong> <span class="formula">p ∧ (p ∨ q) ⇔ p</span></p>
+        </div>
+      </div>
+
+      <h3>Absorção como Regra de Inferência</h3>
+      <p>Dada uma condicional <span class="formula">p → q</span> verdadeira, permite deduzir uma nova condicional.</p>
+      
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Fórmula de Inferência</div>
+        <div class="exemplo__conteudo">
+          <p><span class="formula">p → q ⊢ p → (p ∧ q)</span></p>
+          <p><strong>Interpretação:</strong> Se "p implica q" é verdadeiro, então "p implica (p e q)" também é verdadeiro.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO: TABELA-RESUMO ====== -->
+    <section id="resumo">
+      <h2>Tabela-resumo de Equivalências</h2>
+      
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th scope="col">Conceito</th>
+            <th scope="col">Fórmula / Símbolo</th>
+            <th scope="col">Aplicação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Dupla Negação</strong></td>
+            <td><span class="formula">∼(∼p) ⇔ p</span></td>
+            <td>Eliminação de negações</td>
+          </tr>
+          <tr>
+            <td><strong>1ª Lei de De Morgan</strong></td>
+            <td><span class="formula">∼(p ∧ q) ⇔ ∼p ∨ ∼q</span></td>
+            <td>Negar conjunções</td>
+          </tr>
+          <tr>
+            <td><strong>2ª Lei de De Morgan</strong></td>
+            <td><span class="formula">∼(p ∨ q) ⇔ ∼p ∧ ∼q</span></td>
+            <td>Negar disjunções</td>
+          </tr>
+          <tr>
+            <td><strong>Implicação</strong></td>
+            <td><span class="formula">p → q ⇔ ∼p ∨ q</span></td>
+            <td>Transdução em disjunção</td>
+          </tr>
+          <tr>
+            <td><strong>Contrapositiva</strong></td>
+            <td><span class="formula">p → q ⇔ ∼q → ∼p</span></td>
+            <td>Reformulação alternativa</td>
+          </tr>
+          <tr>
+            <td><strong>Negação Implicação</strong></td>
+            <td><span class="formula">∼(p → q) ⇔ p ∧ ∼q</span></td>
+            <td>Transformar negação</td>
+          </tr>
+          <tr>
+            <td><strong>Bicondicional Básica</strong></td>
+            <td><span class="formula">p ↔ q ⇔ (p → q) ∧ (q → p)</span></td>
+            <td>Expansão em duas condições</td>
+          </tr>
+          <tr>
+            <td><strong>Bicondicional Expandido</strong></td>
+            <td><span class="formula">p ↔ q ⇔ (p ∧ q) ∨ (∼p ∧ ∼q)</span></td>
+            <td>Verdade quando iguais</td>
+          </tr>
+          <tr>
+            <td><strong>Negação Bicondicional</strong></td>
+            <td><span class="formula">∼(p ↔ q) ⇔ (p ∧ ∼q) ∨ (∼p ∧ q)</span></td>
+            <td>Diferença entre p e q</td>
+          </tr>
+          <tr>
+            <td><strong>Comutatividade</strong></td>
+            <td><span class="formula">p ∧ q ⇔ q ∧ p</span><br><span class="formula">p ∨ q ⇔ q ∨ p</span></td>
+            <td>Ordem dos operandos</td>
+          </tr>
+          <tr>
+            <td><strong>Associatividade</strong></td>
+            <td><span class="formula">(p ∧ q) ∧ r ⇔ p ∧ (q ∧ r)</span></td>
+            <td>Grupamento</td>
+          </tr>
+          <tr>
+            <td><strong>Distributividade</strong></td>
+            <td><span class="formula">p ∧ (q ∨ r) ⇔ (p ∧ q) ∨ (p ∧ r)</span></td>
+            <td>Fatorar/expandir</td>
+          </tr>
+          <tr>
+            <td><strong>Absorção</strong></td>
+            <td><span class="formula">p ∨ (p ∧ q) ⇔ p</span></td>
+            <td>Simplificação</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ====== SEÇÃO: QUIZ ====== -->
+    <section id="quiz">
+      <h2>Quiz de fixação</h2>
+      <div class="quiz" data-quiz="aula5-equivalencias" aria-label="Quiz de Regras de Equivalência Lógica"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/script.js" defer></script>
+</body>
+</html>
