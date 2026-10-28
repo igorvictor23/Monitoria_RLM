@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula 6 — Argumentos, Validade e Regras de Inferência · Monitoria de RLM</title>
+  <meta name="description" content="Aula sobre estrutura de argumentos, validade formal, métodos de verificação e regras de inferência (MP, MT, silogismos, dedução).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+
+<div class="barra-progresso" id="barra-progresso" aria-hidden="true"></div>
+
+<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">☰</button>
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <a href="../../index.html" class="sidebar__marca" aria-label="Voltar ao hub principal das aulas">📘 Monitoria de RLM</a>
+    <div class="sidebar__sub">Aula 6 — Argumentos, Validade e Inferência</div>
+    <nav aria-label="Navegação por partes da aula">
+      <ul class="sidebar__nav">
+        <li><a href="#inicio" aria-current="true">Início</a></li>
+        <li><a href="#estrutura">1. Estrutura de Argumentos</a></li>
+        <li><a href="#validade">2. Validade vs Verdade</a></li>
+        <li><a href="#teorema">3. Teorema da Validade</a></li>
+        <li><a href="#metodos">4. Métodos de Verificação</a></li>
+        <li><a href="#mp-mt">5. Modus Ponens e Modus Tollens</a></li>
+        <li><a href="#silogismos">6. Silogismos</a></li>
+        <li><a href="#deducao">7. Dedução Formal</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- ============ CONTEÚDO ============ -->
+  <main class="conteudo">
+
+    <!-- ====== SEÇÃO INÍCIO ====== -->
+    <section id="inicio">
+      <div class="hero">
+        <h1>Aula 6 — Argumentos, Validade e Regras de Inferência</h1>
+        <p class="hero__sub">Estrutura lógica e dedução formal</p>
+        <p>Esta aula apresenta os fundamentos para análise de argumentos, critérios de validade formal e técnicas de dedução usadas em provas e exercícios de raciocínio lógico.</p>
+        <p>Use o menu ao lado para navegar entre os tópicos ou acompanhe a sequência.</p>
+
+        <div class="cards-indice">
+          <a class="card-indice" href="#estrutura">
+            <span class="card-indice__num">1</span>
+            <div class="card-indice__titulo">Estrutura de Argumentos</div>
+            <p class="card-indice__resumo">Premissas, conclusão e notação formal (⊢)</p>
+          </a>
+          <a class="card-indice" href="#validade">
+            <span class="card-indice__num">2</span>
+            <div class="card-indice__titulo">Validade vs Verdade</div>
+            <p class="card-indice__resumo">Distinção entre argumento válido e proposições verdadeiras</p>
+          </a>
+          <a class="card-indice" href="#teorema">
+            <span class="card-indice__num">3</span>
+            <div class="card-indice__titulo">Teorema da Validade</div>
+            <p class="card-indice__resumo">Conexão com tautologias</p>
+          </a>
+          <a class="card-indice" href="#metodos">
+            <span class="card-indice__num">4</span>
+            <div class="card-indice__titulo">Métodos de Verificação</div>
+            <p class="card-indice__resumo">Tabela-verdade, Premissas Verdadeiras, Conclusão Falsa</p>
+          </a>
+          <a class="card-indice" href="#mp-mt">
+            <span class="card-indice__num">5</span>
+            <div class="card-indice__titulo">Modus Ponens e Tollens</div>
+            <p class="card-indice__resumo">Duas regras de inferência fundamentais</p>
+          </a>
+          <a class="card-indice" href="#silogismos">
+            <span class="card-indice__num">6</span>
+            <div class="card-indice__titulo">Silogismos</div>
+            <p class="card-indice__resumo">Hipotético e Disjuntivo</p>
+          </a>
+          <a class="card-indice" href="#deducao">
+            <span class="card-indice__num">7</span>
+            <div class="card-indice__titulo">Dedução Formal</div>
+            <p class="card-indice__resumo">Método Direto e Redução ao Absurdo</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SEÇÃO 1: ESTRUTURA DE ARGUMENTOS ====== -->
+    <section id="estrutura">
+      <h2>1. Estrutura de Argumentos e Validade Lógica</h2>
+
+      <h3>1.1 Conceito e Estrutura de um Argumento</h3>
+      <p>Na lógica proposicional, um <strong>argumento</strong> (ou inferência) é uma relação entre um conjunto de proposições chamadas <strong>premissas</strong> e uma proposição final chamada <strong>conclusão</strong>.</p>
+
+      <h4>Componentes Estruturais</h4>
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Definição</div>
+        <div class="exemplo__conteudo">
+          <p><strong>Premissas (p₁, p₂, …, pₙ):</strong> São as proposições iniciais (hipóteses ou razões) apresentadas como justificativas ou suporte.</p>
+          <p><strong>Conclusão (Q):</strong> É a proposição final (tese) que se pretende derivar das premissas.</p>
+        </div>
+      </div>
+
+      <h3>1.2 Notação Formal</h3>
+      <p>Um argumento com premissas <span class="formula">P₁, P₂, …, Pₙ</span> e conclusão <span class="formula">Q</span> pode ser representado:</p>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Formato Vertical</div>
+        <div class="exemplo__conteudo">
+          <p><span class="formula">P₁</span><br>
+             <span class="formula">P₂</span><br>
+             <span class="formula">⋮</span><br>
+             <span class="formula">Pₙ</span><br>
+             —————————<br>
+             <span class="formula">Q</span></p>
+        </div>
+      </div>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Formato Horizontal (Turnstile)</div>
+        <div class="exemplo__conteudo">
+          <p><span class="formula">P₁, P₂, …, Pₙ ⊢ Q</span></p>
+          <p><em>Leitura: "P₁, P₂, …, Pₙ acarreta Q" ou "Q se deduz de P₁, P₂, …, Pₙ"</em></p>
+        </div>
+      </div>
+
+      <h3>1.3 Indicadores de Conclusão na Linguagem Natural</h3>
+      <p>A conclusão de um argumento é introduzida por conjunções explicativas:</p>
+      <ul>
+        <li><strong>Portanto, logo, por conseguinte</strong>, <strong>dasí</strong>, <strong>consequentemente</strong>, <strong>assim sendo</strong>, <strong>segue que</strong>, <strong>então</strong>, <strong>de modo que</strong></li>
+      </ul>
+
+    </section>
+
+    <!-- ====== SEÇÃO 2: VALIDEZ vs VERDADE ====== -->
+    <section id="validade">
+      <h2>2. Diferença Entre Validade e Verdade</h2>
+
+      <p>Um dos conceitos mais importantes é a separação entre <strong>validade formal</strong> de um argumento e a <strong>verdade factual</strong> das proposições.</p>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th>Conceito</th>
+            <th>Aplica-se a</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Verdade / Falsidade</strong></td>
+            <td><strong>Proposições</strong></td>
+            <td>Correspondência com o mundo real ou valoração lógica (V ou F)</td>
+          </tr>
+          <tr>
+            <td><strong>Validade / Invalidade</strong></td>
+            <td><strong>Argumentos</strong></td>
+            <td>Correção da relação lógica entre premissas e conclusão</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2.1 Definição de Argumento Válido</h3>
+      <p>Um argumento <span class="formula">P₁, P₂, …, Pₙ ⊢ Q</span> é <strong>válido</strong> quando o valor lógico da conclusão <span class="formula">Q</span> é obrigatoriamente <span class="formula">V</span> em todas as situações onde todas as premissas são <span class="formula">V</span>.</p>
+
+      <div class="callout callout--atencao">
+        <div class="callout__titulo">⚠️ Atenção</div>
+        <p>Em um argumento válido, é <strong>impossível</strong> que as premissas sejam todas verdadeiras e a conclusão seja falsa.</p>
+      </div>
+
+      <h3>2.2 Definição de Argumento Inválido</h3>
+      <p>Um argumento é <strong>inválido</strong> quando existe pelo menos uma combinação de valorações em que as premissas são verdadeiras e a conclusão é falsa.</p>
+
+    </section>
+
+    <!-- ====== SEÇÃO 3: TEOREMA DA VALIDADE ====== -->
+    <section id="teorema">
+      <h2>3. O Teorema Fundamental da Validade</h2>
+
+      <p>A verificação formal da validade conecta-se diretamente ao conceito de <strong>Tautologia</strong>.</p>
+
+      <h3>Teorema</h3>
+      <p>Um argumento <span class="formula">P₁, P₂, …, Pₙ ⊢ Q</span> é <strong>válido</strong> se, e somente se, a proposição condicional:</p>
+
+      <p><span class="formula">(P₁ ∧ P₂ ∧ … ∧ Pₙ) → Q</span></p>
+
+      <p>é uma <strong>tautologia</strong> (seu resultado na tabela-verdade for sempre <span class="formula">V</span>).</p>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Exemplo de Verificação</div>
+        <div class="exemplo__conteudo">
+          <p>Se temos: <span class="formula">p → q</span>, <span class="formula">q → r</span> ⊢ <span class="formula">p → r</span></p>
+          <p>Formamos: <span class="formula">(p → q) ∧ (q → r) → (p → r)</span></p>
+          <p>Se esta for tautologia, o argumento é válido.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 4: MÉTODOS DE VERIFICAÇÃO ====== -->
+    <section id="metodos">
+      <h2>4. Métodos para Verificação da Validade de Argumentos</h2>
+
+      <p>Existem <strong>quatro métodos principais</strong> para testar se um argumento é válido ou inválido.</p>
+
+      <h3>4.1 Método da Tabela-Verdade</h3>
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Quando usar:</strong> Poucas proposições simples (máximo 3 variáveis → 2³ = 8 linhas)</p>
+          <p><strong>Procedimento:</strong></p>
+          <ol>
+            <li>Nomear as proposições simples e traduzir o argumento para linguagem simbólica</li>
+            <li>Construir a tabela-verdade com colunas para premissas e conclusão</li>
+            <li>Localizar linhas onde <strong>todas as premissas são V</strong></li>
+            <li>Se conclusão é <strong>V</strong> em todas essas linhas → <strong>VÁLIDO</strong></li>
+            <li>Se em alguma linha premissas V e conclusão F → <strong>INVÁLIDO</strong></li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>4.2 Método das Premissas Verdadeiras</h3>
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Quando usar:</strong> Argumento com premissa simples (<span class="formula">P</span>) ou conjunção (<span class="formula">P ∧ Q</span>)</p>
+          <p><strong>Procedimento:</strong></p>
+          <ol>
+            <li>Fixar todas as premissas com valor <span class="formula">V</span></li>
+            <li>Determinar valores das variáveis a partir da premissa</li>
+            <li>Substituir nos demais elementos</li>
+            <li>Se conclusão for <strong>necessariamente V</strong> → <strong>VÁLIDO</strong></li>
+          </ol>
+        </div>
+      </div>
+
+      <h3>4.3 Método da Conclusão Falsa (Teste de Invalidade)</h3>
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Quando usar:</strong> Conclusão é simples, disjunção (<span class="formula">P ∨ Q</span>) ou condicional (<span class="formula">P → Q</span>)</p>
+          <p><strong>Procedimento:</strong></p>
+          <ol>
+            <li>Assumir que <strong>conclusão é F</strong> e premissas são <strong>V</strong></li>
+            <li>Atribuir valores para forçar conclusão a ser <span class="formula">F</span></li>
+            <li>Verificar se premissas podem ser verdadeiras</li>
+            <li>Se gera <strong>contradição</strong> → <strong>VÁLIDO</strong></li>
+            <li>Se possível ter premissas <span class="formula">V</span> e conclusão <span class="formula">F</span> → <strong>INVÁLIDO</strong></li>
+          </ol>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 5: MODUS PONENS E TOLLENS ====== -->
+    <section id="mp-mt">
+      <h2>5. Regras de Inferência</h2>
+
+      <h3>5.1 Modus Ponens (MP)</h3>
+      <p>O <strong>Modus Ponens</strong> (do latim *modus ponendo ponens*, "o modo que, ao afirmar, afirma") estabelece que se uma condição leva a um resultado, e constatamos que a condição ocorreu, o resultado obrigatoriamente ocorreu.</p>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra Formal</div>
+        <div class="exemplo__conteudo">
+          <p><span class="formula">P → Q</span><br>
+             <span class="formula">P</span><br>
+             ─────────────<br>
+             <span class="formula">Q</span></p>
+          <p><strong>Exemplo:</strong></p>
+          <p>Premissa 1: <span class="formula">p → q</span> (Se chove hoje, a rua ficará molhada)</p>
+          <p>Premissa 2: <span class="formula">p</span> (Choveu hoje)</p>
+          <p>Conclusão: <span class="formula">q</span> (A rua está molhada)</p>
+        </div>
+      </div>
+
+      <h3>5.2 Modus Tollens (MT)</h3>
+      <p>O <strong>Modus Tollens</strong> opera no sentido inverso: se uma condição deveria gerar um resultado, mas o resultado <strong>não</strong> ocorreu, conclui-se que a condição também <strong>não</strong> ocorreu.</p>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra Formal</div>
+        <div class="exemplo__conteudo">
+          <p><span class="formula">P → Q</span><br>
+             <span class="formula">¬Q</span><br>
+             ─────────────<br>
+             <span class="formula">¬P</span></p>
+          <p><strong>Exemplo:</strong></p>
+          <p>Premissa 1: <span class="formula">p → q</span> (Se o bolo é de chocolate, ele será marrom)</p>
+          <p>Premissa 2: <span class="formula">¬q</span> (O bolo não é marrom)</p>
+          <p>Conclusão: <span class="formula">¬p</span> (O bolo não é de chocolate)</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 6: SILOGISMOS ====== -->
+    <section id="silogismos">
+      <h2>6. Silogismos</h2>
+
+      <h3>6.1 Silogismo Hipotético (SH)</h3>
+      <p>É a transitividade aplicada a condicionais: se um primeiro evento implica um segundo, e esse segundo implica um terceiro, o primeiro implica o terceiro diretamente.</p>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra Formal</div>
+        <div class="exemplo__conteudo">
+          <p><span class="formula">P → Q</span><br>
+             <span class="formula">Q → R</span><br>
+             ─────────────<br>
+             <span class="formula">P → R</span></p>
+          <p><strong>Exemplo:</strong></p>
+          <p>Premissa 1: <span class="formula">p → q</span> (Se estudar muito, vou tirar boas notas)</p>
+          <p>Premissa 2: <span class="formula">q → r</span> (Se tirar boas notas, vou passar de ano)</p>
+          <p>Conclusão: <span class="formula">p → r</span> (Se estudar muito, vou passar de ano)</p>
+        </div>
+      </div>
+
+      <h3>6.2 Silogismo Disjuntivo (SD)</h3>
+      <p>Baseia-se na eliminação de alternativas: dada uma disjunção e a negação de um termo, resta apenas o outro.</p>
+
+      <div class="exemplo">
+        <div class="exemplo__rotulo">Regra Formal</div>
+        <div class="exemplo__conteudo">
+          <p><span class="formula">P ∨ Q</span><br>
+             <span class="formula">¬P</span><br>
+             ─────────────<br>
+             <span class="formula">Q</span></p>
+          <p><strong>Exemplo:</strong></p>
+          <p>Premissa 1: <span class="formula">p ∨ q</span> (A chave está no bolso ou na gaveta)</p>
+          <p>Premissa 2: <span class="formula">¬p</span> (A chave não está no bolso)</p>
+          <p>Conclusão: <span class="formula">q</span> (A chave está na gaveta)</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO 7: DEDUÇÃO FORMAL ====== -->
+    <section id="deducao">
+      <h2>7. Métodos de Dedução Formal</h2>
+
+      <h3>7.1 Dedução 1: Prova Condicional (Método Direto)</h3>
+      <p>Usada quando a conclusão tem estrutura de condicional (<span class="formula">A → B</span>).</p>
+
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Mecanismo Passo a Passo:</strong></p>
+          <ol>
+            <li>Assumir temporariamente <span class="formula">A</span> como premissa adicional (hipótese)</li>
+            <li>Usar <span class="formula">A</span> com premissas originais para deduzir <span class="formula">B</span></li>
+            <li>Concluir que <span class="formula">A → B</span></li>
+          </ol>
+          <p><strong>Notação:</strong> <span class="formula">Γ, A ⊢ B ⟹ Γ ⊢ A → B</span></p>
+        </div>
+      </div>
+
+      <h3>7.2 Dedução 2: Prova Indireta (Redução ao Absurdo)</h3>
+      <p>Usada quando a prova direta é inviável. Baseia-se na não-contradição.</p>
+
+      <div class="exemplo">
+        <div class="exemplo__conteudo">
+          <p><strong>Mecanismo Passo a Passo:</strong></p>
+          <ol>
+            <li>Assumir <span class="formula">¬C</span> (negação da conclusão) como hipótese</li>
+            <li>Deduzir até obter <span class="formula">R ∧ ¬R</span> (contradição)</li>
+            <li>Concluir que <span class="formula">¬C</span> é impossível, logo <span class="formula">C</span> é verdadeira</li>
+          </ol>
+          <p><strong>Notação:</strong> <span class="formula">Γ, ¬C ⊢ (R ∧ ¬R) ⟹ Γ ⊢ C</span></p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====== SEÇÃO: TABELA-RESUMO ====== -->
+    <section id="resumo">
+      <h2>Tabela-resumo de Argumentos e Inferências</h2>
+
+      <table class="tabela-card">
+        <thead>
+          <tr>
+            <th>Conceito</th>
+            <th>Fórmula / Notação</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Estrutura de Argumento</strong></td>
+            <td><span class="formula">P₁, P₂, …, Pₙ ⊢ Q</span></td>
+            <td>Representação formal</td>
+          </tr>
+          <tr>
+            <td><strong>Argumento Válido</strong></td>
+            <td><span class="formula">(P₁ ∧ … ∧ Pₙ) → Q</span> = Tautologia</td>
+            <td>Conclusão segue logicamente</td>
+          </tr>
+          <tr>
+            <td><strong>Modus Ponens</strong></td>
+            <td><span class="formula">P → Q, P ⊢ Q</span></td>
+            <td>Direta: antecedente verdadeiro</td>
+          </tr>
+          <tr>
+            <td><strong>Modus Tollens</strong></td>
+            <td><span class="formula">P → Q, ¬Q ⊢ ¬P</span></td>
+            <td>Indireta: consequente falso</td>
+          </tr>
+          <tr>
+            <td><strong>Silogismo Hipotético</strong></td>
+            <td><span class="formula">P → Q, Q → R ⊢ P → R</span></td>
+            <td>Transitividade condicional</td>
+          </tr>
+          <tr>
+            <td><strong>Silogismo Disjuntivo</strong></td>
+            <td><span class="formula">P ∨ Q, ¬P ⊢ Q</span></td>
+            <td>Eliminação de alternativa</td>
+          </tr>
+          <tr>
+            <td><strong>Dedução Direta</strong></td>
+            <td><span class="formula">Γ, A ⊢ B ⟹ Γ ⊢ A → B</span></td>
+            <td>Prova de condicional</td>
+          </tr>
+          <tr>
+            <td><strong>Dedução Indireta</strong></td>
+            <td><span class="formula">Γ, ¬C ⊢ ⊥ ⟹ Γ ⊢ C</span></td>
+            <td>Prova por contradição</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ====== SEÇÃO: QUIZ ====== -->
+    <section id="quiz">
+      <h2>Quiz de fixação</h2>
+      <div class="quiz" data-quiz="aula6-argumentos" aria-label="Quiz de Argumentos, Validade e Regras de Inferência"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/script.js" defer></script>
+</body>
+</html>
